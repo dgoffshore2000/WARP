@@ -1,0 +1,47 @@
+--- Environment----
+1025                ! Fluid density kg/m**3 
+9.81                ! Gravity       m/s**2 
+1000                ! Water depth   m     
+0  0                ! XEFF YEFF, Wave measurement point m
+--- Description of floating bodies ------
+1                   ! Number of bodies
+--- Body 1 ---------------
+model.dat           ! Name of mesh file
+648 162             ! Number of points and number of panels
+6                 ! Number of degrees of freedom
+1  1  0  0         0.000     0.000     0.000   ! degree 1
+1  0  1  0         0.000     0.000     0.000   ! degree 2
+1  0  0  1         0.000     0.000     0.000   ! degree 3
+2  1  0  0         0.000     0.000     0.000   ! degree 4
+2  0  1  0         0.000     0.000     0.000   ! degree 5
+2  0  0  1         0.000     0.000     0.000   ! degree 6
+6                 ! Number of degrees of freedom
+1  1  0  0         0.000     0.000     0.000   ! force 1
+1  0  1  0         0.000     0.000     0.000   ! force 2
+1  0  0  1         0.000     0.000     0.000   ! force 3
+2  1  0  0         0.000     0.000     0.000   ! force 4
+2  0  1  0         0.000     0.000     0.000   ! force 5
+2  0  0  1         0.000     0.000     0.000   ! force 6
+0                   ! Number of lines of additional information
+--- Load cases to be solved ---------
+1         20        0.2       2        ! Freq type 1,2,3=[rad/s,Hz,s],                                                              Number of wave frequencies/periods, Min, and Max
+10        0         180      ! Number of wave directions, Min and Max (degrees)
+--- Post processing -------
+ 0 0 0              ! IRF calculation (0 for no calculation), time step and duration
+0                   ! Show pressure
+ 0 0 0              ! Kochin function       ! Number of directions of calculation (0 for no calculations), Min and Max (degrees)
+ 0 0 0 0            ! Free surface elevation! Number of points in x direction (0 for no calcutions)and y direction and dimensions of domain in x and y direction
+1                   ! Response Amplitude Operator (RAO), 0 no calculation, 1 calculated
+1                   ! output freq type, 1,2,3=[rad/s,Hz,s]
+----- QTF--------------------
+1                   ! QTF flag, 1 is calculated
+20	0.1  2           ! Number of radial frequencies, Min, and Max values for the QTF computation
+0                   ! 0 Unidirection, Bidirection 1 
+2                   ! Contrib, 1 DUOK, 2 DUOK+HASBO, 3 Full QTF (DUOK+HASBO+HASFS+ASYMP
+NA                  ! Name of free surface meshfile (Only for Contrib 3), type 'NA' if not applicable
+0 	0	0              ! Free surface QTF parameters: Re Nre NBessel (for Contrib 3)
+0                   ! 1 Includes Hydrostatic terms of the quadratic first order motion, -[K]xi2_tilde
+1                   ! For QTFposProc, output freq type, 1,2,3=[rad/s,Hz,s]
+1                   ! For QTFposProc, 1 includes DUOK in total QTFs, 0 otherwise
+1                   ! For QTFposProc, 1 includes HASBO in total QTFs, 0 otherwise
+0                   ! For QTFposProc, 1 includes HASFS+ASYMP in total QTFs, 0 otherwise

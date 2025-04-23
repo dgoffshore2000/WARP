@@ -1,0 +1,51 @@
+#---------------------------------------------------------
+#  WARP Demo -- Based on Nemoh                            
+#  Generate set file  
+#  Programmed by Wei Gao                                  
+#-------------------------------------------------------- 
+Parameter Setting:
+model               ! Model & DB name
+2 1                 ! SYMM of model
+1                   ! SYMM about XOZ plane
+0 0                 ! Water plane XOY location
+0 0 0               ! Model COG location
+0                   ! Tcol fo water level
+1025                ! RHO of water
+9.81                ! Gravity
+1000                ! Water depth
+1                   ! Numbers of body
+0 0                 ! Measure point
+1                   ! Force degree at 0
+1                   ! Force degree at 1
+1                   ! Force degree at 2
+1                   ! Force degree at 3
+1                   ! Force degree at 4
+1                   ! Force degree at 5
+1                   ! Freq type 1,2,3=[rad/s,Hz,s] 
+0.2                 ! Min Wave frequency rad/s 
+2                   ! Max Wave frequency rad/s 
+20                  ! MNumber of Wave frequency
+0                   ! Min Wave direction deg 
+180                 ! Max Wave direction deg
+10                  ! Number of Wave frequency
+ 0 0 0              ! IRF a b c
+0                   ! Show pressure 1 Yes; 0 No
+ 0 0 0              ! Kochin a b c
+ 0 0 0 0            ! Freesurface a b c d
+1                   ! Response Amplitude Operator (RAO), 0 no calculation, 1 calculated
+1                   ! Output freq type, 1,2,3=[rad/s,Hz,s]
+1                   ! QTF flag, 1 is calculated
+20	0.1  2           ! Number of radial frequencies, Min, and Max values for the QTF computation
+0                   ! 0 Unidirection, Bidirection 1 
+2                   ! Contrib, 1 DUOK, 2 DUOK+HASBO, 3 Full QTF (DUOK+HASBO+HASFS+ASYMP)
+NA                  ! Name of free surface meshfile (Only for Contrib 3), type 'NA' if not applicable 
+0 	0	0              ! Free surface QTF parameters: Re Nre NBessel (for Contrib 3)
+0                   ! 1 Includes Hydrostatic terms of the quadratic first order motion, -[K]xi2_tilde
+1                   ! For QTFposProc, output freq type, 1,2,3=[rad/s,Hz,s]
+1                   ! For QTFposProc, 1 includes DUOK in total QTFs, 0 otherwise
+1                   ! For QTFposProc, 1 includes HASBO in total QTFs, 0 otherwise 
+0                   ! For QTFposProc, 1 includes HASFS+ASYMP in total QTFs, 0 otherwise
+2                   ! Gauss quadrature (GQ) surface integration, N^2 GQ Nodes, specify N(1,4) 
+0.001               ! eps_zmin for determine minimum z of flow and source points of panel, zmin=eps_zmin*body_diameter  
+0                   ! 0 GAUSS ELIM.; 1 LU DECOMP.: 2 GMRES	!Linear system solver  
+                    ! Restart parameter, Relative Tolerance, max iter -> additional input for GMRES 
