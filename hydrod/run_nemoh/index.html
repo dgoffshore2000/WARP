@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://warp.github.io/hydrod/run_nemoh/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>run nemoh - WARP, preprocess tool for Nemoh.</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "run nemoh";
+        var mkdocs_page_input_path = "hydrod\\run_nemoh.md";
+        var mkdocs_page_url = "/hydrod/run_nemoh/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> WARP, preprocess tool for Nemoh.
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Main</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Main</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Workflow</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../workflow/workflow/">workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../workflow/files/">files</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Hydrostatic</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mesh/run_mesh/">run mesh</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Hydrdynamic</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">run nemoh</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nemoh_results/">results</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Post</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../post/mesh_view/">mesh view</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../post/curve_results/">curve results</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">WARP, preprocess tool for Nemoh.</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Hydrdynamic</li>
+      <li class="breadcrumb-item active">run nemoh</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/hydrod/run_nemoh.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="run-nemoh">Run Nemoh</h1>
+<p><strong>Nemoh Execution Modes</strong>  </p>
+<p>Nemoh supports three calculation modes:  </p>
+<p>​<strong>· First-Order Wave Forces (without RAO)</strong>: <br />
+<span class="pre-space">
+- Outputs: Added mass, radiation damping, and first-order wave forces. 
+</span> <br />
+<span class="pre-space">
+<strong>- No MASS parameters required</strong>.<br />
+</span></p>
+<p>​<strong>· First-Order Wave Forces + RAO</strong>:<br />
+<span class="pre-space">
+- Outputs: Added mass, radiation damping, first-order wave forces and response Amplitude Operator (RAO) results.
+</span> <br />
+<span class="pre-space">
+- ​<strong>MASS parameters must be defined</strong>. <br />
+</span></p>
+<p>​<strong>· First-Order + Second-Order Wave Forces (QTF)</strong>:<br />
+<span class="pre-space">
+- Requires: 
+</span> <br />
+<span class="pre-space2">
+  MASS parameters.  <br />
+</span>
+<span class="pre-space2">
+  BVP solution and RAO calculation.  <br />
+</span>
+<span class="pre-space2">
+  QTF parameter setup.  <br />
+</span> <br />
+<span class="pre-space">
+- Steps: 
+</span> <br />
+<span class="pre-space2">
+  MASS parameters.  <br />
+</span>
+<span class="pre-space2">
+  Run BVP solver.   <br />
+</span>
+<span class="pre-space2">
+  Compute QTF after motion RAO is obtained.<br />
+</span>         </p>
+<p>Before hydrodynamic calculations, configure solver parameters. WARP uses ​<strong>default recommended values</strong>; advanced settings should follow the <a href="https://lheea.gitlab.io/Nemoh/">Nemoh Manual</a>.  </p>
+<hr />
+<p><strong>MASS Parameter Configuration</strong>  </p>
+<p>Nemoh calculates hydrostatic properties via <code>mesh.exe</code> or <code>hydroCal.exe</code>. </p>
+<p><span class="pre-space">
+- In WARP, users can ​<strong>customize</strong>: 
+</span> <br />
+<span class="pre-space2">
+  Mass/Inertia Matrix <br />
+</span>
+<span class="pre-space2">
+  Added Damping   <br />
+</span>
+<span class="pre-space2">
+  Added Stiffness<br />
+</span></p>
+<p>Use this page(MASS) to override default values for specialized cases (e.g., additional damping/stiffness).  </p>
+<hr />
+<p><strong>QTF Parameter Setting</strong>  </p>
+<p>QTF (Quadratic Transfer Function) setup in Nemoh is ​<strong>complex</strong>.<br />
+​<strong>Refer to the <a href="https://lheea.gitlab.io/Nemoh/">Nemoh Manual</a></strong> for detailed guidelines.  </p>
+<hr />
+<p><strong>Summary</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Requirements</th>
+<th>Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First-Order Only</td>
+<td>No MASS input</td>
+<td>Added mass, radiation damping, 1st order wave forces</td>
+</tr>
+<tr>
+<td>First-Order + RAO</td>
+<td>MASS parameters</td>
+<td>Added mass, radiation damping, 1st order wave forces and motion RAOs</td>
+</tr>
+<tr>
+<td>First-Order + QTF</td>
+<td>MASS + BVP + QTF parameters</td>
+<td>Added mass, radiation damping, 1st order wave forces, motion RAOs and QTF</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../mesh/run_mesh/" class="btn btn-neutral float-left" title="run mesh"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../nemoh_results/" class="btn btn-neutral float-right" title="results">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../mesh/run_mesh/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../nemoh_results/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

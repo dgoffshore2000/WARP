@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://warp.github.io/mesh/run_mesh/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>run mesh - WARP, preprocess tool for Nemoh.</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "run mesh";
+        var mkdocs_page_input_path = "mesh\\run_mesh.md";
+        var mkdocs_page_url = "/mesh/run_mesh/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> WARP, preprocess tool for Nemoh.
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Main</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Main</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Workflow</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../workflow/workflow/">workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../workflow/files/">files</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Hydrostatic</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">run mesh</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Hydrdynamic</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../hydrod/run_nemoh/">run nemoh</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../hydrod/nemoh_results/">results</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Post</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../post/mesh_view/">mesh view</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../post/curve_results/">curve results</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">WARP, preprocess tool for Nemoh.</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Hydrostatic</li>
+      <li class="breadcrumb-item active">run mesh</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/mesh/run_mesh.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="run-mesh">Run Mesh</h1>
+<p>The ​<strong>mesh program</strong> is primarily used for ​<strong>model checking</strong> and ​<strong>hydrostatic calculations</strong>.  </p>
+<p>In WARP:<br />
+1. Place the model file in the ​<strong>root directory</strong> of the project folder.<br />
+2. Configure calculation parameters:<br />
+   - Water depth<br />
+   - Waterplane position<br />
+   - Center of gravity position<br />
+   - Waterline position (recommended: <code>0</code>)<br />
+   - Water density<br />
+   - Gravitational acceleration  </p>
+<p>After setting parameters, click ​<strong>Run</strong>. The program will:<br />
+- Write input parameters to <code>mesh.cal</code><br />
+- Generate a batch file<br />
+- Execute the batch file to run the ​<strong>mesh program</strong>.  </p>
+<p>Once completed, the mesh program saves results in the <code>mesh</code> subdirectory.  </p>
+<p><img alt="mesh_result_files" src="../../figure/2_mesh_results.png" />  </p>
+<p>Click ​<strong>Summary</strong> in the interface to generate:<br />
+- Hydrostatic calculation summary files<br />
+- Model metadata files<br />
+in the project root directory.  </p>
+<p><img alt="mesh_summary_file" src="../../figure/2_mesh_summary.png" />  </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../workflow/files/" class="btn btn-neutral float-left" title="files"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../hydrod/run_nemoh/" class="btn btn-neutral float-right" title="run nemoh">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../workflow/files/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../hydrod/run_nemoh/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

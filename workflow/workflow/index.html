@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://warp.github.io/workflow/workflow/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>workflow - WARP, preprocess tool for Nemoh.</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "workflow";
+        var mkdocs_page_input_path = "workflow\\workflow.md";
+        var mkdocs_page_url = "/workflow/workflow/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> WARP, preprocess tool for Nemoh.
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Main</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Main</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Workflow</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">workflow</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#file-directory-structure">File Directory Structure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#main-menu">Main Menu</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basic-workflow">Basic Workflow:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-notes">Key Notes</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../files/">files</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Hydrostatic</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mesh/run_mesh/">run mesh</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Hydrdynamic</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../hydrod/run_nemoh/">run nemoh</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../hydrod/nemoh_results/">results</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Post</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../post/mesh_view/">mesh view</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../post/curve_results/">curve results</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">WARP, preprocess tool for Nemoh.</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Workflow</li>
+      <li class="breadcrumb-item active">workflow</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/workflow/workflow.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="workflow-of-warp">Workflow of WARP</h1>
+<h4 id="file-directory-structure"><strong>File Directory Structure</strong></h4>
+<p>The relative paths of folders within the program directory are fixed:  </p>
+<p>The ​<strong>bin folder</strong> contains <strong>Nemoh's ​.exe executable files</strong>.  </p>
+<p>The ​<strong>db folder</strong> is the project directory. Project files and model files must have ​identical names.  </p>
+<hr />
+<h4 id="main-menu"><strong>Main Menu</strong></h4>
+<p>​<strong>File:</strong> Displays the current ​file preparation status and ​function status.  </p>
+<p>​Save Settings File: Saves the current interface input parameters (file extension: .set).<br />
+​Read Settings File: Loads the <strong>.set</strong> file to ​minimize redundant data entry.  </p>
+<p><img alt="main_menu_file" src="../../figure/1_main%20menu.png" /></p>
+<p>​<strong>Help:</strong>  </p>
+<p>​​<strong>About:​</strong>  Shows program information (version, author, etc.).<br />
+​​<strong>Help:​</strong>  Redirects to the online help page.  </p>
+<hr />
+<h4 id="basic-workflow"><strong>Basic Workflow:</strong></h4>
+<p>​<strong>1. MODEL</strong></p>
+<p>​<strong>Set Model Name:</strong> Enter the ​model file name (located in the project directory) in the input field. Use ​English names only (no special characters).  </p>
+<p>​<strong>Set Model Symmetry:</strong> Input the model symmetry parameters. Click the input field to view formatting hints.  </p>
+<p>​<strong>New Folder:</strong> Click to create a project folder.  </p>
+<p>​<strong>Mesh View:</strong> Click to preview the model.  </p>
+<p><img alt="Model_figure" src="../../figure/1_model.png" /></p>
+<p>​<strong>2. HYST (Hydrostatic Calculation)</strong></p>
+<p>​<strong>Symmetry about XOZ:</strong> Input the model symmetry parameters. Follow the hints displayed when clicking other input fields.  </p>
+<p>​<strong>Run:</strong> Click to execute the mesh program and perform hydrostatic calculations.  </p>
+<p>​<strong>Summary:</strong> Generates a summary_hydrosta.txt file in the project directory, recording basic hydrostatic results.  </p>
+<p><img alt="HYST_figure" src="../../figure/2_HYST.png" /></p>
+<p>​<strong>3. MASS</strong></p>
+<p>Input ​structural mass, ​moment of inertia, ​added damping matrix, and ​added stiffness matrix.  </p>
+<p>Click ​Save to store the data.  </p>
+<p><img alt="MASS_figure" src="../../figure/3_mass.png" /></p>
+<p>​<strong>4. CASE (Hydrodynamic Parameters)</strong></p>
+<p>​<strong>Wave Measure Point X/Y:</strong> Input coordinates for wave measurement points and click ​Add. Note: This feature is currently unstable; use with caution.  </p>
+<p>​<strong>Body Set:</strong> Select the ​degrees of freedom (DOFs) to calculate.  </p>
+<p>​<strong>Load Cases:</strong><br />
+    -Input ​angular frequency (or period/Hz), ​minimum frequency, ​maximum frequency, ​number of frequencies, ​minimum wave direction, ​maximum wave direction, and ​number of wave directions.<br />
+​    -Post Set: Input post-processing parameters as prompted. Ensure "Calculate RAO" is checked only after completing and saving parameters in the ​MASS tab.<br />
+​    -Output Freq Type: Specify the output frequency type.  </p>
+<p>​<strong>QTF Set:</strong> Configure parameters for Quadratic Transfer Function (QTF) calculations. Refer to Nemoh’s documentation for advanced settings.  </p>
+<p>Click ​Save to store all parameters.  </p>
+<p><img alt="case_figure" src="../../figure/4_case.png" /></p>
+<p>​<strong>5. RUN</strong>  </p>
+<p>​​<strong>Run Setting:​</strong> Configure solver parameters (default values recommended). Modify as needed using the input hints.    </p>
+<p>​<strong>Run BVP:​</strong> Click ​RUN to solve the Boundary Value Problem (BVP) and compute first-order loads/motions.    </p>
+<p>​<strong>Run QTF:​</strong> Click ​RUN to perform QTF calculations. Ensure all parameters in ​CASE/QTF Set are configured correctly.  </p>
+<p>​<img alt="RUN_figure" src="../../figure/5_run.png" /></p>
+<p><strong>6. PLOT</strong>  </p>
+<p>​​<strong>Model File Path:​</strong> Click ​OPEN to select the model path. Use ​Show Mesh &gt; ​OPEN to display the model.    </p>
+<p>​​<img alt="PLOT_figure1" src="../../figure/6_plot.png" /></p>
+<p><strong>Added Mass &amp; Radiation Damping:​</strong> Select parameters and click ​Apply to generate plots. Save plots directly from the interface.   </p>
+<p><strong>1st Order Wave Force/Phase Angle:​</strong> Select parameters and click ​Apply to generate plots. Save plots from the interface.  </p>
+<p><strong>Motion RAO/Phase Angle:​</strong> Select parameters and click ​Apply to generate RAO curves. RAO calculations must be completed before plotting.</p>
+<hr />
+<h4 id="key-notes"><strong>Key Notes</strong></h4>
+<p>​
+​<strong>File Naming:​</strong> Ensure model and project files have ​identical names (case-sensitive).  </p>
+<p>​<strong>Special Characters:​</strong> Avoid symbols (e.g., @, #, space) in filenames.  </p>
+<p>​<strong>QTF Calculations:​</strong> Requires precise parameter setup in ​CASE/QTF Set.  </p>
+<p>​<strong>RAO Plots:​</strong> Only available after ​MASS parameters are saved and RAO is computed.  </p>
+<hr />
+<p>​
+<strong>Recommended Practices</strong></p>
+<p>Use ​default solver settings unless specific adjustments are required.  </p>
+<p>Validate mesh quality in ​Mesh View before running calculations.  </p>
+<p>Backup project files in the ​<strong>db folder</strong> regularly.  </p>
+<p><strong>For advanced usage, consult the Nemoh official documentation.</strong></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../.." class="btn btn-neutral float-left" title="Main"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../files/" class="btn btn-neutral float-right" title="files">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../files/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
