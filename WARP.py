@@ -10,6 +10,7 @@ from tkinter import filedialog
 from tkinter import messagebox as mbox
 import numpy as np
 #
+import webbrowser
 #
 from PIL import Image, ImageTk
 from io import BytesIO
@@ -38,7 +39,7 @@ import read_radia as rrd
 #
 #
 win = tk.Tk()
-win.title("WARP-Wave Analysis Response Program Demo ")
+win.title("WARP-Wave-structure Analysis Response Program")
 win.option_add("*Menu*Font", "Arial 11")
 style = ttk.Style()
 style.configure(".", font=("Arial", 11)) 
@@ -85,7 +86,6 @@ pi=3.1415926
 def _quit():
     win.quit()
     win.destroy()
-    exit()
 #
 def status():
     db=modname.get()
@@ -471,6 +471,15 @@ def read_set():
     mbox.showinfo("NOTE","Set file read finish.Measure points" +'\n' \
                           " setting should inputed by user")
 #
+#  web help
+#
+def web_help():
+    try:
+        webbrowser.open("https://dgoffshore2000.github.io/WARP/", new=2)  # new=2表示在新标签页打开
+    except Exception as e:
+        print(f"无法打开网页: {e}")
+#
+#
 
 def about():
     #
@@ -564,7 +573,7 @@ fileMenu.add_command(label = "Exit",command=_quit)
 helpMenu = Menu(menuBar, tearoff=0)
 menuBar.add_cascade(label="Help  ", menu=helpMenu)
 helpMenu.add_command(label = "About",command=about)
-helpMenu.add_command(label = "Help")
+helpMenu.add_command(label = "Help",command=web_help)
 #----------------------
 # Tabs set
 #----------------------
@@ -2294,6 +2303,7 @@ def intfile_run():
         os.mkdir(os.getcwd()+"/db/" +db+"/results")
         os.mkdir(os.getcwd()+"/db/" +db+"/results/sources")
     else:
+        os.mkdir(os.getcwd()+"/db/" +db+"/results")
         os.mkdir(os.getcwd()+"/db/" +db+"/results/sources")
     #
     batchpath = os.getcwd()+"/db/" +db+"/run.bat"
