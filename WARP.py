@@ -1,8 +1,8 @@
 #coding:utf-8
-#--------------------------------------------
-#  WARP Demo -- Based on Nemoh
+#------------------------------------------------
+#  WARP-Wave-structure Analysis Response Program
 #  by WeiGao
-#-------------------------------------------
+#-----------------------------------------------
 import tkinter as tk
 from tkinter import ttk
 from tkinter import Menu
@@ -52,22 +52,22 @@ AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABILAAASCwAAAAAAAAAA
 
 
 def set_icon(window,ICON_BASE64):
-    # 解码Base64数据
+    # 
     icon_data = base64.b64decode(ICON_BASE64)
     
-    # 创建临时文件
+    # 
     with tempfile.NamedTemporaryFile(suffix='.ico', delete=False) as tmp_file:
         tmp_file.write(icon_data)
         icon_path = tmp_file.name
     
-    # 设置窗口图标
+    # 
     window.iconbitmap(icon_path)
     
-    # 尝试删除临时文件（某些系统可能不允许，故放在try块中）
+    # 
     try:
         os.remove(icon_path)
     except Exception as e:
-        pass  # 忽略删除错误
+        pass  
 #
 
 set_icon(win,ICON_BASE64)
@@ -2321,7 +2321,7 @@ def intfile_run():
     #
     import run_nemoh as rn
     #
-    runt = rn.bars(batchpath,filepath,montyRunsta)
+    rn.bars(batchpath,filepath,montyRunsta)
     #
 #
 def qtf_run():
@@ -2363,7 +2363,7 @@ def qtf_run():
     #
     import run_nemoh as rn
     #
-    runt = rn.bars(batchpath,filepath,montyRunsta)
+    rn.bars(batchpath,filepath,montyRunsta)
     #      
 #
 montyRun = ttk.LabelFrame(tab5, text = "Run Setting")
@@ -2688,13 +2688,6 @@ phase1list['values']=('Surge','Sway','Heave','Roll','Pitch','Yaw')
 phase1list.grid(column=1, row=1)
 add_fp1point = ttk.Button(monty94, text="Apply",command = read_f)
 add_fp1point.grid(column= 2, row=1,sticky="S")
-# ttk.Label(monty94, text="Far-field wave drift force      ").grid(column=0, row=3,sticky='W')
-# fm= tk.StringVar()
-# fmlist=ttk.Combobox(monty94,textvariable=fm,width =5)
-# fmlist['values']=('Fx','Fy','Mz')
-# fmlist.grid(column=1, row=3)
-# add_fmpoint = ttk.Button(monty94, text="Apply",command = read_d)
-# add_fmpoint.grid(column= 2, row=3,sticky="W")
 #
 # Motion RAOs
 #
@@ -2714,4 +2707,4 @@ add_raoppoint = ttk.Button(monty95, text="Apply",command = read_rao)
 add_raoppoint.grid(column= 2, row=1,sticky="S")
 #
 win.mainloop()
-# finish
+#
