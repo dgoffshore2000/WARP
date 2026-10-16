@@ -1,0 +1,11 @@
+*-----------------------------------------
+*   WARP Demo -- Based on Nemoh            
+*   Programmed by Wei Gao                 
+*-----------------------------------------
+1.Model Summary
+  DB name  is                : cylinder_irr
+  Model name is              : cylinder_irr
+  Symm of model is           : 2 0
+
+  Total model node number is : 638
+  Total model panel number is: 634

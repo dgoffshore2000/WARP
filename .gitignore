@@ -1,0 +1,44 @@
+# WARP V1.0 — 发布包忽略规则
+# 原则：只收录源码、计算内核、示例模型输入与说明文档；
+#       体积大且可重新生成的产物一律不入库。
+# 注意：gitignore 不支持行尾注释，# 必须独占行首。
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---------- 计算过程中重新生成的产物 ----------
+# preProc 输出（示例模型中约 7MB）
+**/Normalvelocities.dat
+# hydrosCal 中间结果目录
+**/mesh/
+# 三维预览缓存
+**/mesh_view.stl
+# RAO 计算目录
+**/motion/
+# 运行前自动备份目录
+**/*_bak_*/
+**/*.srcbak
+**/*.bak
+**/logfile.txt
+*.log
+
+# 示例模型内与本机路径绑定的遗留脚本（含 d:\... 硬编码路径）
+**/run_mesh.bat
+db/*/run.bat
+
+# ---------- 使用文档站点（本地整理中，完善后单独提交）----------
+docs/
+
+build/
+dist/
+*.spec
+_internal/
+
+# ---------- 系统 / 编辑器 ----------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

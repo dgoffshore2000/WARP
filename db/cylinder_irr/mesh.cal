@@ -1,0 +1,10 @@
+cylinder_irr        ! modelname   
+0                   ! SYMM of XOZ   
+0 0                 ! location at XOY   
+0 0 0               ! COG   
+634                 ! panels   
+2
+0                   ! TCOL water line move   
+1                   ! for scale
+1025.0              ! rho of water  
+9.81                ! gravity   

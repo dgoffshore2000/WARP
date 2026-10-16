@@ -1,0 +1,10 @@
+# WARP V1.0 运行依赖（Web 版）
+# 建议 Python 3.10+；以下版本为开发验证版本，可按需放宽
+
+nicegui==3.17.1
+numpy==2.2.5
+Pillow==11.2.1
+matplotlib==3.10.1
+
+# 网格查看（meshmagick，LHEEA 开源）
+meshmagick==3.4

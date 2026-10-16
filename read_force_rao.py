@@ -1,0 +1,28 @@
+#
+def read_force_rao(path,direcn,freqn):
+    import numpy
+    mags=numpy.zeros([direcn,freqn,6])
+    phas=numpy.zeros([direcn,freqn,6])
+    file=open(path,'r')
+    for i in range(7):
+        line=file.readline()
+        if line =="":
+            break
+        else:
+            pass
+    for i in range(direcn):
+        line=file.readline()
+        for j in range(freqn):
+            line=file.readline()
+            for k in range(6):
+                low_a=15*(2*k+1)
+                up_a=15*(2*k+2)
+                low_p=15*(2*k+2)
+                up_p=15*(2*k+3)
+                mag=float(line[low_a:up_a])
+                pha=float(line[low_p:up_p])
+                mags[i,j,k]=mag
+                phas[i,j,k]=pha
+    return mags,phas
+    file.close()
+  
