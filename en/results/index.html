@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://dgoffshore2000.github.io/WARP/en/results/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Results - WARP Web Help</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Results";
+        var mkdocs_page_input_path = "results.en.md";
+        var mkdocs_page_url = "/WARP/en/results/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../" class="icon icon-home"> WARP Web Help
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick Start</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">UI and Workflow</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../workflow/workflow/">Interface Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../workflow/files/">Input and Output Files</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../params/params/">Parameter Reference</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Results</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#results-first-order-curves">Results (first-order curves)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#qtf-results-second-order-contours">QTF Results (second-order contours)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#qtf-diagonal-mean-drift-force">QTF Diagonal (mean drift force)</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">WARP Web Help</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Results</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/results.en.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="results">Results</h1>
+<p>Result panels use the same conventions as the desktop PLOT page. Click <strong>刷新结果</strong> after BEM finishes to load data; <strong>加载方向列表</strong> loads the available headings.</p>
+<p><img alt="Results" src="../../figure/web_ui_05_results.png" /></p>
+<h2 id="results-first-order-curves">Results (first-order curves)</h2>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Wave excitation force / RAO / added mass / radiation damping, etc.</td>
+</tr>
+<tr>
+<td>DOF i / DOF j</td>
+<td>force direction and motion direction</td>
+</tr>
+<tr>
+<td>Direction</td>
+<td>wave heading (all headings can be overlaid: <code>Wave 0° / 45° / …</code>)</td>
+</tr>
+<tr>
+<td>X axis</td>
+<td>frequency or period (rad/s / Hz / period s)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Units</strong>:</p>
+<ul>
+<li>Excitation forces are normalised by unit wave amplitude (<code>Fe(t) = a·|Fe|·cos(ωt − ∠Fe)</code>): translational <strong>N/m</strong>, rotational <strong>N·m/m</strong>.</li>
+<li>Added mass in <strong>kg</strong> (kg·m² for rotations); radiation damping in <strong>N·s/m</strong> (N·m·s/rad for rotations).</li>
+<li>Rotational RAO data files are already in <strong>deg/m</strong>; no radian conversion is applied in the UI.</li>
+</ul>
+<h2 id="qtf-results-second-order-contours">QTF Results (second-order contours)</h2>
+<p><img alt="QTF Results" src="../../figure/web_ui_06_qtf.png" /></p>
+<ul>
+<li>Source: <code>results/QTF/OUT_QTF*.dat</code> (normalised by ρg).</li>
+<li>Four panels: <strong>amplitude / phase</strong> on the left, <strong>real / imaginary</strong> on the right; colour scale is <code>log10(|QTF|/ρg)</code>.</li>
+<li>Controls: QTF type (difference <code>QTFM (ω1−ω2)</code> / sum <code>QTFP (ω1+ω2)</code>), heading pair β, DOF, X axis (frequency / period).</li>
+<li><strong>加载QTF选项</strong> loads the QTF Set configuration to determine the available combinations.</li>
+</ul>
+<h2 id="qtf-diagonal-mean-drift-force">QTF Diagonal (mean drift force)</h2>
+<p><img alt="QTF Diagonal" src="../../figure/web_ui_07_qtfdiag.png" /></p>
+<ul>
+<li>Takes the <code>ω1 = ω2</code> diagonal, i.e. the <strong>mean drift force</strong>.</li>
+<li>All heading pairs are overlaid in one figure, styled like the Results panel; the Y axis can be switched (e.g. <code>|QTF|/ρg</code>) and the X axis between frequency and period.</li>
+</ul>
+<blockquote>
+<p>Second-order slow-drift studies usually start from QTF Diagonal (mean drift) for a first check; a full slow-drift response also needs the difference-frequency QTF together with mooring and damping models.</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../params/params/" class="btn btn-neutral float-left" title="Parameter Reference"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../params/params/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../js/lang-switch.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

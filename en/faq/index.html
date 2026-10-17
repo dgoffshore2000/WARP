@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://dgoffshore2000.github.io/WARP/en/faq/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FAQ - WARP Web Help</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FAQ";
+        var mkdocs_page_input_path = "faq.en.md";
+        var mkdocs_page_url = "/WARP/en/faq/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../" class="icon icon-home"> WARP Web Help
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick Start</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">UI and Workflow</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../workflow/workflow/">Interface Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../workflow/files/">Input and Output Files</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../params/params/">Parameter Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../results/">Results</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">FAQ</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#parameters-and-saving">Parameters and saving</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#solving">Solving</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#results">Results</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other">Other</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">WARP Web Help</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">FAQ</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/faq.en.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="faq">FAQ</h1>
+<h2 id="parameters-and-saving">Parameters and saving</h2>
+<p><strong>Q: SAVE .CAL reports "summary_model.txt missed"?</strong>
+A: V2.0 falls back automatically — node / panel counts are taken directly from <code>&lt;model&gt;.dat</code> and the file is regenerated. The error only appears when no mesh file exists at all; import a mesh first.</p>
+<p><strong>Q: RUN HYST reports "Nemoh.cal missing"?</strong>
+A: Run <strong>SAVE .CAL</strong> first (preProc.exe needs <code>Nemoh.cal</code>).</p>
+<p><strong>Q: hydrosCal crashes and no Hydrostatics.dat is produced?</strong>
+A: Older builds required a pre-existing <code>Mechanics/</code> directory. The current version creates it before running; update the program if you still hit this.</p>
+<p><strong>Q: I changed Symm / Waterplane / Tcol but SUMMARY did not change.</strong>
+A: Expected. Hydrostatics are driven by <strong>COG and Rho / Gravity</strong> (hydrosCal determines the equilibrium attitude); the other fields exist for compatibility with desktop parameter files.</p>
+<p><strong>Q: Why is the MASS inertia zero by default?</strong>
+A: Zero means "let the program decide". Fill them in when you want explicit control (e.g. damping calibration) and press <strong>SAVE MECHANICS</strong>.</p>
+<h2 id="solving">Solving</h2>
+<p><strong>Q: When should I use GMRES, and with what settings?</strong>
+A: Leave it off by default (direct solver). Enable it when mesh size makes memory or time prohibitive; <code>Restart 10 / Rel Tol 1e-5 / Max iter 1000</code> suits most cases — raise Restart to 30–50 if convergence stalls.</p>
+<p><strong>Q: The BEM log seems frozen?</strong>
+A: Fixed in V2.0 — gfortran pipe buffering used to hold progress lines until the process ended; the log now streams each problem as it completes. Reference: 330 problems ≈ 11 minutes for cylinder_irr (~2 s each).</p>
+<p><strong>Q: How long should a run take?</strong>
+A: Number of problems = frequencies × (headings for diffraction + ticked DOFs for radiation). Runtime scales roughly linearly with mesh size.</p>
+<p><strong>Q: Are <code>CA.dat</code> and <code>CM.dat</code> swapped?</strong>
+A: No — this is how Nemoh names them: <code>CA.dat</code> = radiation damping, <code>CM.dat</code> = added mass. WARP follows the official definition.</p>
+<h2 id="results">Results</h2>
+<p><strong>Q: What are the units of the rotational excitation force?</strong>
+A: Normalised by unit amplitude: translational N/m, rotational N·m/m.</p>
+<p><strong>Q: Do rotational RAOs need a 180/π conversion?</strong>
+A: No. The data files are already in deg/m.</p>
+<p><strong>Q: The QTF Results plots are empty.</strong>
+A: Run the QTF computation first (QTF Set configured + RUN QTF), confirm <code>results/QTF/OUT_QTF*.dat</code> exists, then click <strong>加载QTF选项</strong>.</p>
+<h2 id="other">Other</h2>
+<p><strong>Q: Is multi-body supported?</strong>
+A: Only single-body parameter input; multi-body cases require hand-editing the <code>.cal</code> file.</p>
+<p><strong>Q: Can it run on Linux?</strong>
+A: <code>bin/</code> ships Windows executables. On Linux you must compile the Nemoh kernel yourself, and remember the program accesses the lowercase <code>db/</code> path.</p>
+<p><strong>Q: Will a new run overwrite previous results?</strong>
+A: No. Before each run the old <code>results/</code>, <code>QTFPreprocOut/</code>, … are renamed to <code>*_bak_&lt;timestamp&gt;</code>; history is never deleted automatically.</p>
+<p><strong>Q: How is the irregular frequency (IRR) handled?</strong>
+A: Tick <strong>IRR 去除不规则频率</strong> in the HYST panel; the removal range is written to <code>Nemoh.cal</code>. Whether it is needed depends on whether the mesh's natural frequencies fall inside the computed range.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../results/" class="btn btn-neutral float-left" title="Results"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../results/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../js/lang-switch.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

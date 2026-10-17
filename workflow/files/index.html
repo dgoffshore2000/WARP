@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://dgoffshore2000.github.io/WARP/workflow/files/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>输入与输出文件说明 - WARP Web Help</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u8f93\u5165\u4e0e\u8f93\u51fa\u6587\u4ef6\u8bf4\u660e";
+        var mkdocs_page_input_path = "workflow\\files.md";
+        var mkdocs_page_url = "/WARP/workflow/files/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> WARP Web Help
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" title="在此输入需要搜索的内容" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航栏">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">快速开始</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">界面与工作流程</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../workflow/">界面总览与工作流程</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">输入与输出文件说明</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#bin">计算内核（bin/）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">输入文件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">输出文件</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#mesh-summary">静水力（mesh/ 与 summary）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#results">一阶水动力（results/）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#qtfqtf">二阶 QTF（QTF/）</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">其他</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../params/params/">参数详解</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../results/">结果查看</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../faq/">常见问题 FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">关于</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="移动导航栏">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">WARP Web Help</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="文档"></a></li>
+          <li class="breadcrumb-item">界面与工作流程</li>
+      <li class="breadcrumb-item active">输入与输出文件说明</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/workflow/files.md" class="icon icon-github"> 在GitHub上编辑</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">输入与输出文件说明</h1>
+<p>模型目录固定为 <code>db/&lt;model&gt;/</code>，网格文件与模型同名（<code>&lt;model&gt;.dat</code>）。目录结构：</p>
+<pre><code>db/&lt;model&gt;/
+├─ &lt;model&gt;.dat          # Nemoh 格式网格（首行为对称标志 + 节点/面片数据）
+├─ Nemoh.cal            # 计算主控文件（SAVE .CAL 生成）
+├─ mesh.cal             # 网格 / 静水力控制文件（RUN HYST 使用）
+├─ input_solver.txt     # 求解器参数（SAVE MECHANICS 生成）
+├─ summary_model.txt    # 模型节点/面片统计（可由程序自动生成）
+├─ summary_hydrosta.txt # 静水力汇总（SUMMARY 生成）
+├─ Mechanics/           # 力学矩阵（hydrosCal 读入）
+├─ mesh/                # 静水力中间结果（RUN HYST 重建）
+├─ results/             # BEM 一阶结果（RUN BEM 生成）
+├─ motion/              # RAO 结果
+├─ QTF/                 # QTF 结果（RUN QTF 生成）
+└─ *_bak_&lt;时间戳&gt;/      # 运行前自动备份（不删除历史）
+</code></pre>
+<hr />
+<h2 id="bin">计算内核（bin/）</h2>
+<table>
+<thead>
+<tr>
+<th>可执行文件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>preProc.exe</code></td>
+<td>网格预处理（HYST 第一步：重建目录、生成 summary_model）</td>
+</tr>
+<tr>
+<td><code>hydrosCal.exe</code></td>
+<td>静水力求解（浮心 / 排水量 / 水线面 / 刚度矩阵）</td>
+</tr>
+<tr>
+<td><code>Solver.exe</code></td>
+<td>一阶 BEM 求解器（辐射 + 绕射）</td>
+</tr>
+<tr>
+<td><code>postProc.exe</code></td>
+<td>一阶后处理（激励力、RAO、Kochin、自由面等）</td>
+</tr>
+<tr>
+<td><code>QTFpreProc.exe</code></td>
+<td>QTF 前处理</td>
+</tr>
+<tr>
+<td><code>QTFsolver.exe</code></td>
+<td>QTF 求解器</td>
+</tr>
+<tr>
+<td><code>QTFpostProc.exe</code></td>
+<td>QTF 后处理（输出 OUT_QTF*.dat）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">输入文件</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;model&gt;.dat</code></td>
+<td>Nemoh 格式网格：首行 <code>对称标志 节点数 单元数</code>，其后为节点坐标与面片连接关系</td>
+</tr>
+<tr>
+<td><code>Nemoh.cal</code></td>
+<td>主控文件：环境参数、DOF、频率 / 浪向、测量点、Post Set、QTF Set 段落（SAVE .CAL 生成）</td>
+</tr>
+<tr>
+<td><code>mesh.cal</code></td>
+<td>静水力控制文件（RUN HYST 使用）</td>
+</tr>
+<tr>
+<td><code>input_solver.txt</code></td>
+<td>求解器参数：GQ、eps_zmin、求解方法（直接 / GMRES 及其参数）</td>
+</tr>
+<tr>
+<td><code>Mechanics/Inertia.dat</code></td>
+<td>质量矩阵</td>
+</tr>
+<tr>
+<td><code>Mechanics/Badd.dat</code></td>
+<td>附加阻尼矩阵</td>
+</tr>
+<tr>
+<td><code>Mechanics/Km.dat</code></td>
+<td>附加刚度矩阵</td>
+</tr>
+<tr>
+<td><code>Mechanics/Kh.dat</code></td>
+<td>静水刚度矩阵（由 hydrosCal 结果写入）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">输出文件</h2>
+<h3 id="mesh-summary">静水力（mesh/ 与 summary）</h3>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mesh/Hydrostatics.dat</code></td>
+<td>浮心、排水量、水线面面积等静水力结果（SUMMARY 的数据源）</td>
+</tr>
+<tr>
+<td><code>mesh/GC_hull.dat</code> / <code>Inertia_hull.dat</code> / <code>KH.dat</code></td>
+<td>重心、船体惯性、静水刚度</td>
+</tr>
+<tr>
+<td><code>summary_hydrosta.txt</code></td>
+<td>静水力汇总文本</td>
+</tr>
+</tbody>
+</table>
+<h3 id="results">一阶水动力（results/）</h3>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>results/index.dat</code></td>
+<td>各问题的参数索引</td>
+</tr>
+<tr>
+<td><code>results/CA.dat</code></td>
+<td><strong>辐射阻尼</strong>系数 ⚠️</td>
+</tr>
+<tr>
+<td><code>results/CM.dat</code></td>
+<td><strong>附加质量</strong>系数 ⚠️</td>
+</tr>
+<tr>
+<td><code>results/Fe.dat</code></td>
+<td>一阶波浪激励力（Froude–Krylov + 绕射合成）</td>
+</tr>
+<tr>
+<td><code>results/FKForce.dat</code> / <code>FKForce.tec</code></td>
+<td>Froude–Krylov 力</td>
+</tr>
+<tr>
+<td><code>results/DiffractionForce.tec</code></td>
+<td>绕射力</td>
+</tr>
+<tr>
+<td><code>results/ExcitationForce.tec</code></td>
+<td>激励力（按浪向）</td>
+</tr>
+<tr>
+<td><code>results/Forces.dat</code> / <code>RadiationCoefficients.tec</code></td>
+<td>求解器原始力输出 / 辐射系数</td>
+</tr>
+<tr>
+<td><code>results/Normalvelocities.dat</code></td>
+<td>面元法向速度（preProc 生成）</td>
+</tr>
+<tr>
+<td><code>motion/RAO.dat</code></td>
+<td>运动 RAO（Post Set 勾选 Calculate RAO 时）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Nemoh 命名（官方文件即如此）</strong>：<code>CA.dat</code> 是<strong>辐射阻尼（Radiation Damping）</strong>，<code>CM.dat</code> 才是<strong>附加质量（Added Mass）</strong>，与直觉相反。WARP 已按官方定义读取；自行解析结果文件时请注意。</p>
+</blockquote>
+<h3 id="qtfqtf">二阶 QTF（QTF/）</h3>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>QTF/OUT_QTF*.dat</code></td>
+<td>差频 / 和频 QTF 矩阵（QTF Results 页的数据源，按 ρg 归一化）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">其他</h2>
+<table>
+<thead>
+<tr>
+<th>文件 / 目录</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>summary_model.txt</code></td>
+<td>节点 / 单元统计；缺失时程序会直接从网格文件统计并自动生成</td>
+</tr>
+<tr>
+<td><code>mesh_view.stl</code></td>
+<td>3D 预览缓存（可再生成）</td>
+</tr>
+<tr>
+<td><code>*_bak_&lt;时间戳&gt;/</code></td>
+<td>每次 RUN 前对 <code>results/</code>、<code>QTFPreprocOut/</code> 等的自动备份，<strong>永不自动删除</strong></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+        <a href="../workflow/" class="btn btn-neutral float-left" title="界面总览与工作流程"><span class="icon icon-circle-arrow-left"></span> 上一章</a>
+        <a href="../../params/params/" class="btn btn-neutral float-right" title="参数详解">下一章 <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  用<a href="https://www.mkdocs.org/">MkDocs</a>构建，使用<a href="https://readthedocs.org">Read the Docs</a>提供的<a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>。
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="版本">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../workflow/" style="color: #fcfcfc">&laquo; 上一章</a></span>
+    
+    
+      <span><a href="../../params/params/" style="color: #fcfcfc">下一章 &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../js/lang-switch.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

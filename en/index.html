@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://dgoffshore2000.github.io/WARP/en/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Home - WARP Web Help</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.en.md";
+        var mkdocs_page_url = "/WARP/en/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="./" class="icon icon-home"> WARP Web Help
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#feature-overview">Feature overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-changed-from-desktop-v10">What changed from desktop V1.0</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="quickstart/">Quick Start</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">UI and Workflow</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="workflow/workflow/">Interface Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="workflow/files/">Input and Output Files</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="params/params/">Parameter Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="results/">Results</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="faq/">FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="./">WARP Web Help</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="./" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/index.en.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="warp-web-online-help">WARP Web — Online Help</h1>
+<p><strong>WARP</strong> (Wave-structure Analysis Response Program) is a pre/post-processing tool for the open-source BEM solver <a href="https://lheea.ec-nantes.fr/valorisation/logiciels-et-brevets/nemoh-presentation">Nemoh</a> (École Centrale Nantes / LHEEA).</p>
+<p><strong>V2.0 (Web edition)</strong> is a complete rewrite of the former desktop (Tkinter) application: parameter input, solver-chain execution and result inspection all happen in a single browser page.</p>
+<p><img alt="WARP Web interface" src="../figure/web_ui_01_model_env.png" /></p>
+<h2 id="feature-overview">Feature overview</h2>
+<table>
+<thead>
+<tr>
+<th>Panel</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MODEL</strong></td>
+<td>Browse / create / delete models; 3D preview of the <code>&lt;model&gt;.dat</code> mesh (symmetry mirrored automatically); wave measurement points (Excel paste, generate rows from a point count)</td>
+</tr>
+<tr>
+<td><strong>HYST</strong></td>
+<td>Hydrostatics chain <code>preProc.exe → hydrosCal.exe</code>; SUMMARY reports centre of buoyancy, displacement, waterplane area and mass</td>
+</tr>
+<tr>
+<td><strong>Parameters</strong></td>
+<td>Environment (density / gravity / depth); Body set (6 DOF); MASS (mass, inertia tensor, added damping, added stiffness); Load Cases (frequencies and headings); Solver (Gauss quadrature / GMRES); Post Set; QTF Set</td>
+</tr>
+<tr>
+<td><strong>Run</strong></td>
+<td><code>SAVE .CAL</code> writes Nemoh.cal; <code>SAVE MECHANICS</code> writes the mechanics matrices; <code>RUN BEM</code> / <code>RUN QTF</code> run in the background with a live log; previous results are backed up automatically</td>
+</tr>
+<tr>
+<td><strong>Results</strong></td>
+<td>First-order wave excitation force (amplitude / phase), motion RAOs, added mass and radiation damping, with heading selection</td>
+</tr>
+<tr>
+<td><strong>QTF Results</strong></td>
+<td>Second-order difference / sum-frequency QTF contour panels and mean drift force along the main diagonal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-changed-from-desktop-v10">What changed from desktop V1.0</h2>
+<ul>
+<li>The Tkinter desktop client is replaced by a browser UI (NiceGUI) — nothing to install on the client side.</li>
+<li>The hydrostatics chain is now <code>preProc.exe → hydrosCal.exe</code> (desktop used <code>mesh.exe</code>).</li>
+<li>New: GMRES iterative solver option, bulk paste for wave measurement points, model deletion, live run log.</li>
+<li>Added mass and radiation damping are now read from the correct Nemoh files (<code>CA.dat</code> = radiation damping, <code>CM.dat</code> = added mass).</li>
+</ul>
+<blockquote>
+<p>Only <strong>single-body</strong> parameter input is supported; multi-body cases require hand-editing the <code>.cal</code> file.</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="quickstart/" class="btn btn-neutral float-right" title="Quick Start">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+      <span><a href="quickstart/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../js/lang-switch.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

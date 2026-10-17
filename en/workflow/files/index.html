@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://dgoffshore2000.github.io/WARP/en/workflow/files/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Input and Output Files - WARP Web Help</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Input and Output Files";
+        var mkdocs_page_input_path = "workflow\\files.en.md";
+        var mkdocs_page_url = "/WARP/en/workflow/files/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../" class="icon icon-home"> WARP Web Help
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Quick Start</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">UI and Workflow</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../workflow/">Interface Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Input and Output Files</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#kernels-bin">Kernels (bin/)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#input-files">Input files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output-files">Output files</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#hydrostatics-mesh-and-summary">Hydrostatics (mesh/ and summary)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#first-order-hydrodynamics-results">First-order hydrodynamics (results/)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#second-order-qtf-qtf">Second-order QTF (QTF/)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other">Other</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../params/params/">Parameter Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../results/">Results</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">WARP Web Help</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">UI and Workflow</li>
+      <li class="breadcrumb-item active">Input and Output Files</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/workflow/files.en.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="input-and-output-files">Input and Output Files</h1>
+<p>Each model lives in <code>db/&lt;model&gt;/</code>, and the mesh file is named after the model (<code>&lt;model&gt;.dat</code>). Typical layout:</p>
+<pre><code>db/&lt;model&gt;/
+├─ &lt;model&gt;.dat          # Nemoh mesh (symmetry flag on the first line, then nodes / panels)
+├─ Nemoh.cal            # main control file (written by SAVE .CAL)
+├─ mesh.cal             # mesh / hydrostatics control file (used by RUN HYST)
+├─ input_solver.txt     # solver parameters (written by SAVE MECHANICS)
+├─ summary_model.txt    # node / panel statistics (regenerated automatically if missing)
+├─ summary_hydrosta.txt # hydrostatics summary (written by SUMMARY)
+├─ Mechanics/           # mechanics matrices (read by hydrosCal)
+├─ mesh/                # hydrostatics intermediates (rebuilt by RUN HYST)
+├─ results/             # first-order BEM results (written by RUN BEM)
+├─ motion/              # RAO results
+├─ QTF/                 # QTF results (written by RUN QTF)
+└─ *_bak_&lt;timestamp&gt;/   # automatic backups (history is never deleted)
+</code></pre>
+<hr />
+<h2 id="kernels-bin">Kernels (bin/)</h2>
+<table>
+<thead>
+<tr>
+<th>Executable</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>preProc.exe</code></td>
+<td>mesh pre-processing (step 1 of HYST: rebuild directories, write summary_model)</td>
+</tr>
+<tr>
+<td><code>hydrosCal.exe</code></td>
+<td>hydrostatics solver (centre of buoyancy / displacement / waterplane / stiffness)</td>
+</tr>
+<tr>
+<td><code>Solver.exe</code></td>
+<td>first-order BEM solver (radiation + diffraction)</td>
+</tr>
+<tr>
+<td><code>postProc.exe</code></td>
+<td>first-order post-processing (excitation forces, RAO, Kochin, free surface)</td>
+</tr>
+<tr>
+<td><code>QTFpreProc.exe</code></td>
+<td>QTF pre-processing</td>
+</tr>
+<tr>
+<td><code>QTFsolver.exe</code></td>
+<td>QTF solver</td>
+</tr>
+<tr>
+<td><code>QTFpostProc.exe</code></td>
+<td>QTF post-processing (writes <code>OUT_QTF*.dat</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="input-files">Input files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;model&gt;.dat</code></td>
+<td>Nemoh mesh: first line <code>symmetry nodes panels</code>, followed by node coordinates and panel connectivity</td>
+</tr>
+<tr>
+<td><code>Nemoh.cal</code></td>
+<td>control file: environment, DOF, frequencies / headings, measure points, Post Set, QTF Set (written by SAVE .CAL)</td>
+</tr>
+<tr>
+<td><code>mesh.cal</code></td>
+<td>hydrostatics control file (used by RUN HYST)</td>
+</tr>
+<tr>
+<td><code>input_solver.txt</code></td>
+<td>solver parameters: GQ, eps_zmin, solver type (direct / GMRES with its parameters)</td>
+</tr>
+<tr>
+<td><code>Mechanics/Inertia.dat</code></td>
+<td>mass / inertia matrix</td>
+</tr>
+<tr>
+<td><code>Mechanics/Badd.dat</code></td>
+<td>added damping matrix</td>
+</tr>
+<tr>
+<td><code>Mechanics/Km.dat</code></td>
+<td>added stiffness matrix</td>
+</tr>
+<tr>
+<td><code>Mechanics/Kh.dat</code></td>
+<td>hydrostatic stiffness matrix (written from hydrosCal results)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-files">Output files</h2>
+<h3 id="hydrostatics-mesh-and-summary">Hydrostatics (<code>mesh/</code> and summary)</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mesh/Hydrostatics.dat</code></td>
+<td>centre of buoyancy, displacement, waterplane area (source for SUMMARY)</td>
+</tr>
+<tr>
+<td><code>mesh/GC_hull.dat</code>, <code>Inertia_hull.dat</code>, <code>KH.dat</code></td>
+<td>centre of gravity, hull inertia, hydrostatic stiffness</td>
+</tr>
+<tr>
+<td><code>summary_hydrosta.txt</code></td>
+<td>plain-text hydrostatics summary</td>
+</tr>
+</tbody>
+</table>
+<h3 id="first-order-hydrodynamics-results">First-order hydrodynamics (<code>results/</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>results/index.dat</code></td>
+<td>problem index</td>
+</tr>
+<tr>
+<td><code>results/CA.dat</code></td>
+<td><strong>radiation damping</strong> coefficients ⚠️</td>
+</tr>
+<tr>
+<td><code>results/CM.dat</code></td>
+<td><strong>added mass</strong> coefficients ⚠️</td>
+</tr>
+<tr>
+<td><code>results/Fe.dat</code></td>
+<td>first-order excitation force (Froude–Krylov + diffraction)</td>
+</tr>
+<tr>
+<td><code>results/FKForce.dat</code> / <code>FKForce.tec</code></td>
+<td>Froude–Krylov force</td>
+</tr>
+<tr>
+<td><code>results/DiffractionForce.tec</code></td>
+<td>diffraction force</td>
+</tr>
+<tr>
+<td><code>results/ExcitationForce.tec</code></td>
+<td>excitation force per heading</td>
+</tr>
+<tr>
+<td><code>results/Forces.dat</code> / <code>RadiationCoefficients.tec</code></td>
+<td>raw solver force output / radiation coefficients</td>
+</tr>
+<tr>
+<td><code>results/Normalvelocities.dat</code></td>
+<td>panel normal velocities (written by preProc)</td>
+</tr>
+<tr>
+<td><code>motion/RAO.dat</code></td>
+<td>motion RAOs (when <code>Calculate RAO</code> is enabled)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Nemoh naming trap</strong> (the official files are named this way): <code>CA.dat</code> holds the <strong>radiation damping</strong>, while <code>CM.dat</code> holds the <strong>added mass</strong> — the opposite of what the names suggest. WARP reads them according to the official definition; keep this in mind when post-processing the files yourself.</p>
+</blockquote>
+<h3 id="second-order-qtf-qtf">Second-order QTF (<code>QTF/</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>QTF/OUT_QTF*.dat</code></td>
+<td>difference / sum-frequency QTF matrices (source for QTF Results, normalised by ρg)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="other">Other</h2>
+<table>
+<thead>
+<tr>
+<th>File / directory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>summary_model.txt</code></td>
+<td>node / panel statistics; if missing, the program counts them from the mesh and regenerates the file</td>
+</tr>
+<tr>
+<td><code>mesh_view.stl</code></td>
+<td>3D preview cache (regenerable)</td>
+</tr>
+<tr>
+<td><code>*_bak_&lt;timestamp&gt;/</code></td>
+<td>automatic backup of <code>results/</code>, <code>QTFPreprocOut/</code>, … taken before each run — never deleted automatically</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../workflow/" class="btn btn-neutral float-left" title="Interface Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../params/params/" class="btn btn-neutral float-right" title="Parameter Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../workflow/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../params/params/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../js/lang-switch.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://dgoffshore2000.github.io/WARP/params/params/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>参数详解 - WARP Web Help</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u53c2\u6570\u8be6\u89e3";
+        var mkdocs_page_input_path = "params\\params.md";
+        var mkdocs_page_url = "/WARP/params/params/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> WARP Web Help
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" title="在此输入需要搜索的内容" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航栏">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">快速开始</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">界面与工作流程</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../workflow/workflow/">界面总览与工作流程</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../workflow/files/">输入与输出文件说明</a>
+                  </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">参数详解</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#environment">Environment（全局环境）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wave-measure-points">Wave measure points（波浪测量点）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hyst-hydrostatics">HYST — Hydrostatics（静水力）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#body-set-degrees-of-freedom">Body set — Degrees of freedom</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mass-mechanics">MASS / Mechanics（质量与力学矩阵）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-casesnemohcal">Load Cases（Nemoh.cal 波浪频率 / 浪向）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#solverinput_solvertxt">Solver（input_solver.txt）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#post-set">Post Set（后处理开关）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#qtf-set-qtf">QTF Set（二阶 QTF）</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../results/">结果查看</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../faq/">常见问题 FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">关于</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="移动导航栏">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">WARP Web Help</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="文档"></a></li>
+      <li class="breadcrumb-item active">参数详解</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/params/params.md" class="icon icon-github"> 在GitHub上编辑</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">参数解释</h1>
+<p>各参数在界面上的位置见 <a href="../../workflow/workflow/">界面总览与工作流程</a>。多数默认值取自 Nemoh 推荐设置；高级调整请参考 <a href="https://lheea.gitlab.io/Nemoh/">Nemoh 手册</a>。</p>
+<hr />
+<h2 id="environment">Environment（全局环境）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+<th>默认</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rho kg/m³</td>
+<td>水密度</td>
+<td>1025.0</td>
+</tr>
+<tr>
+<td>Gravity m/s²</td>
+<td>重力加速度</td>
+<td>9.81</td>
+</tr>
+<tr>
+<td>Water depth m</td>
+<td>水深（有限水深；大值近似无限水深）</td>
+<td>80.0（示例值，按实际填写）</td>
+</tr>
+<tr>
+<td>Bodies</td>
+<td>参与计算的浮体数</td>
+<td>1（当前仅支持单体）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wave-measure-points">Wave measure points（波浪测量点）</h2>
+<p>空间固定点的 <code>x y</code> 坐标列表，Nemoh 在这些点输出自由面高程 / 波浪时历。每行一个 <code>x y</code>，可直接从 Excel 粘贴两列数据；<strong>点数 + 生成</strong> 按行数批量补齐。不需要时保持一行 <code>0  0</code> 即可（程序不会写入冗余点）。</p>
+<h2 id="hyst-hydrostatics">HYST — Hydrostatics（静水力）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Symm XOZ 0/1</td>
+<td>网格关于 XOZ 平面的对称标志（Nemoh 网格文件头两列，2 0 = 无 XOZ 对称，2 1 = 有）</td>
+</tr>
+<tr>
+<td>Waterplane X Y</td>
+<td>水线面原点位置 X, Y</td>
+</tr>
+<tr>
+<td>Tcol</td>
+<td>Z 方向吃水调整量</td>
+</tr>
+<tr>
+<td>IRR</td>
+<td>勾选后去除不规则频率（irregular frequency）</td>
+</tr>
+<tr>
+<td>COG x y z</td>
+<td>重心位置</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>提示</strong>：经对照验证，当前版本的静水力结果实际由 <strong>COG 与 Rho / Gravity</strong> 驱动（hydrosCal 以水线面自动求解平衡浮态）；Symm / Waterplane / Tcol 等字段保留用于与桌面版参数文件兼容，修改后不影响 SUMMARY 数值。</p>
+</blockquote>
+<p>静水力结果写入 <code>mesh/</code>（<code>Hydrostatics.dat</code>、<code>Inertia_hull.dat</code>、<code>GC_hull.dat</code>、<code>KH.dat</code>），SUMMARY 按其结果汇总。程序会自动创建 <code>Mechanics/</code> 目录并从网格文件统计节点 / 面片数，无需依赖桌面版预生成的文件。</p>
+<h2 id="body-set-degrees-of-freedom">Body set — Degrees of freedom</h2>
+<p>勾选参与辐射计算的自由度：Surge（纵荡）、Sway（横荡）、Heave（垂荡）、Roll（横摇）、Pitch（纵摇）、Yaw（艏摇）。</p>
+<h2 id="mass-mechanics">MASS / Mechanics（质量与力学矩阵）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>写入文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mass (kg)</td>
+<td><code>Mechanics/Inertia.dat</code></td>
+<td>结构质量</td>
+</tr>
+<tr>
+<td>Moment of inertia tensor (kg·m²)</td>
+<td><code>Mechanics/Inertia.dat</code></td>
+<td>3×3 惯性张量（默认 0 = 交给程序处理）</td>
+</tr>
+<tr>
+<td>附加阻尼 D11..D66</td>
+<td><code>Mechanics/Badd.dat</code></td>
+<td>额外线性阻尼矩阵（如摇荡阻尼装置）</td>
+</tr>
+<tr>
+<td>附加刚度 S11..S66</td>
+<td><code>Mechanics/Km.dat</code></td>
+<td>额外刚度矩阵（如系泊 / 弹性支撑）</td>
+</tr>
+</tbody>
+</table>
+<p>矩阵区域支持框选后从 Excel 粘贴。<strong>Save Mechanics</strong> 时才会写盘；仅在需要额外阻尼 / 刚度时填写，否则保持 0。</p>
+<h2 id="load-casesnemohcal">Load Cases（Nemoh.cal 波浪频率 / 浪向）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Freq type</td>
+<td>频率类型：<code>1,2,3 = [rad/s, Hz, s]</code>（角频率 / 赫兹 / 周期）</td>
+</tr>
+<tr>
+<td>Min freq / Max freq / N freq</td>
+<td>频率下限、上限与个数（Nemoh 按线性插值生成）</td>
+</tr>
+<tr>
+<td>Min dir° / Max dir° / N dir°</td>
+<td>浪向下限、上限与个数（deg，0° = 沿 +X 入射）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="solverinput_solvertxt">Solver（input_solver.txt）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+<th>默认</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GQ</td>
+<td>高斯积分阶数：面元积分使用 N² 个高斯点，N 取 1–4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>eps_zmin</td>
+<td>源 / 汇点抬升系数：<code>zmin = eps_zmin × body_diameter</code>，避免奇异</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>Solver</td>
+<td>0 = 直接法（高斯消元）</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>GMRES</strong>（勾选框）</td>
+<td>勾选后改用 GMRES 迭代求解（大规模网格更快）</td>
+<td><strong>不勾选</strong></td>
+</tr>
+<tr>
+<td>Restart</td>
+<td>GMRES 重启参数</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Rel Tol</td>
+<td>相对收敛容差</td>
+<td>1e-5</td>
+</tr>
+<tr>
+<td>Max iter</td>
+<td>最大迭代次数</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>GMRES 使用建议</strong>：默认（直接法）即可满足多数工况；当网格规模大、直接法内存 / 耗时难以接受时再勾选。参数 10 / 1e-5 / 1000 适用于大多数场景；若日志显示迭代收敛停滞，可把 Restart 提高到 30–50。</p>
+</blockquote>
+<h2 id="post-set">Post Set（后处理开关）</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRF a b c</td>
+<td>辐射 IRF（脉冲响应）输出的频率段：Min / Step / Max</td>
+</tr>
+<tr>
+<td>Kochin a b c</td>
+<td>Kochin 函数输出角度段，建议 <code>361 0 360</code>（每 1° 一个，覆盖整圆）</td>
+</tr>
+<tr>
+<td>Free surface a b c</td>
+<td>自由面输出网格定义（Min / Step / Max）</td>
+</tr>
+<tr>
+<td>Out freq type</td>
+<td>输出频率类型：<code>1,2,3 = [rad/s, Hz, s]</code></td>
+</tr>
+<tr>
+<td>Show pressure</td>
+<td>输出面元压力分布</td>
+</tr>
+<tr>
+<td>Calculate RAO</td>
+<td>计算 RAO（<strong>必须先在 MASS 保存参数</strong>，否则无质量 / 惯性数据）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="qtf-set-qtf">QTF Set（二阶 QTF）</h2>
+<p><img alt="QTF Set" src="../../figure/web_ui_04_run.png" /></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启用 QTF 计算</td>
+<td>总开关（不勾选则 RUN QTF 不可用）</td>
+</tr>
+<tr>
+<td>QTF freq set：N / Min / Max</td>
+<td>QTF 径向频率的个数、下限与上限</td>
+</tr>
+<tr>
+<td>浪向组合</td>
+<td><code>单向 β1=β2</code>（同向入射）或 <code>双向 全组合</code>（双浪向全交叉组合）</td>
+</tr>
+<tr>
+<td>Contrib（计算内容）</td>
+<td><code>1</code> 仅 DUOK（近场二次项）；<code>2</code> DUOK+HASBO（+势项）；<code>3</code> 完整 QTF（DUOK+HASBO+HASFS+ASYMP，需自由面积分）</td>
+</tr>
+<tr>
+<td>FS meshfile</td>
+<td>自由面网格文件名（仅 Contrib 3 需要；不适用填 <code>NA</code>）</td>
+</tr>
+<tr>
+<td>FS QTF params</td>
+<td><code>Re, Nre, NBessel</code>（自由面积分的 Bessel 展开参数，仅 Contrib 3）</td>
+</tr>
+<tr>
+<td>计入二阶运动水动力恢复项 -[K]^H2</td>
+<td>二阶运动力恢复项（含 z-G 耦合）</td>
+</tr>
+<tr>
+<td>输出频率</td>
+<td>QTFpostProc 输出频率类型：<code>1,2,3 = [rad/s, Hz, s]</code></td>
+</tr>
+<tr>
+<td>QTFpostproc 汇总开关</td>
+<td>DUOK / HASBO / HASFS+ASYMP 是否计入总 QTF 输出</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>QTF 参数组合复杂，请务必结合 <a href="https://lheea.gitlab.io/Nemoh/">Nemoh 手册</a> 的 QTF 章节设置。</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+        <a href="../../workflow/files/" class="btn btn-neutral float-left" title="输入与输出文件说明"><span class="icon icon-circle-arrow-left"></span> 上一章</a>
+        <a href="../../results/" class="btn btn-neutral float-right" title="结果查看">下一章 <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  用<a href="https://www.mkdocs.org/">MkDocs</a>构建，使用<a href="https://readthedocs.org">Read the Docs</a>提供的<a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>。
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="版本">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../workflow/files/" style="color: #fcfcfc">&laquo; 上一章</a></span>
+    
+    
+      <span><a href="../../results/" style="color: #fcfcfc">下一章 &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../js/lang-switch.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" /><link rel="canonical" href="https://dgoffshore2000.github.io/WARP/" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>WARP Web Help</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u9996\u9875";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/WARP/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> WARP Web Help
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" title="在此输入需要搜索的内容" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航栏">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">首页</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">功能总览</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#v10">版本说明（相对桌面版 V1.0）</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="quickstart/">快速开始</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">界面与工作流程</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="workflow/workflow/">界面总览与工作流程</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="workflow/files/">输入与输出文件说明</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="params/params/">参数详解</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="results/">结果查看</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="faq/">常见问题 FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="about/">关于</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="移动导航栏">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">WARP Web Help</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="文档"></a></li>
+      <li class="breadcrumb-item active">首页</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/index.md" class="icon icon-github"> 在GitHub上编辑</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="warp-web">WARP Web — 在线帮助</h1>
+<p><strong>WARP</strong>（Wave-structure Analysis Response Program）是基于开源 BEM 求解器 <a href="https://lheea.ec-nantes.fr/valorisation/logiciels-et-brevets/nemoh-presentation">Nemoh</a>（École Centrale Nantes / LHEEA）的波浪-结构相互作用前后处理工具。</p>
+<p><strong>V2.0（Web 版）</strong> 将原桌面版（Tkinter）界面完整重写为浏览器界面：所有参数输入、计算调用与结果查看都在网页内完成。</p>
+<p><img alt="WARP Web 界面" src="figure/web_ui_01_model_env.png" /></p>
+<h2 id="_1">功能总览</h2>
+<table>
+<thead>
+<tr>
+<th>板块</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MODEL</strong></td>
+<td>模型选择 / 新建 / 删除；<code>&lt;model&gt;.dat</code> 网格三维预览（对称自动镜像补全）；波浪测量点</td>
+</tr>
+<tr>
+<td><strong>HYST</strong></td>
+<td>静水力链路 <code>preProc.exe → hydrosCal.exe</code>；SUMMARY 汇总浮心 / 排水量 / 水线面面积 / 质量</td>
+</tr>
+<tr>
+<td><strong>参数</strong></td>
+<td>Environment（密度 / 重力 / 水深）；Body set（6 自由度）；MASS（质量、转动惯量、附加阻尼、附加刚度）；Load Cases（频率与浪向）；Solver（高斯积分 / GMRES）；Post Set；QTF Set</td>
+</tr>
+<tr>
+<td><strong>计算</strong></td>
+<td><code>SAVE .CAL</code> 生成 Nemoh.cal；<code>SAVE MECHANICS</code> 生成参数矩阵（质量、附加阻尼、附加刚度）；<code>RUN BEM</code> / <code>RUN QTF</code> 后台运行，日志实时滚动；运行前旧结果自动备份</td>
+</tr>
+<tr>
+<td><strong>Results</strong></td>
+<td>一阶波浪激励力（幅值 / 相位）、运动 RAO、附加质量与辐射阻尼曲线，支持浪向切换</td>
+</tr>
+<tr>
+<td><strong>QTF Results</strong></td>
+<td>二阶差频 / 和频 QTF 等高线四联图与主对角线平均漂移力显示</td>
+</tr>
+</tbody>
+</table>
+<h2 id="v10">版本说明（相对桌面版 V1.0）</h2>
+<ul>
+<li>界面由 Tkinter 桌面程序改为浏览器页面（NiceGUI），无需安装客户端。</li>
+<li>静水力链路更新为 <code>preProc.exe → hydrosCal.exe</code>（桌面版为 <code>mesh.exe</code>）。</li>
+<li>新增 GMRES 迭代求解器选项、波浪测量点批量粘贴、模型删除、运行日志实时输出等能力。</li>
+<li>附加质量与辐射阻尼读取已修正 Nemoh 官方文件的命名差异（<code>CA.dat</code> = 辐射阻尼，<code>CM.dat</code> = 附加质量）。</li>
+</ul>
+<blockquote>
+<p>当前版本仅支持<strong>单体</strong>参数输入；多体工况需手工编辑 <code>.cal</code> 文件。</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+        <a href="quickstart/" class="btn btn-neutral float-right" title="快速开始">下一章 <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  用<a href="https://www.mkdocs.org/">MkDocs</a>构建，使用<a href="https://readthedocs.org">Read the Docs</a>提供的<a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>。
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="版本">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+      <span><a href="quickstart/" style="color: #fcfcfc">下一章 &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="js/lang-switch.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-10-17 03:00:37.942074+00:00
+-->

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://dgoffshore2000.github.io/WARP/en/params/params/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Parameter Reference - WARP Web Help</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Parameter Reference";
+        var mkdocs_page_input_path = "params\\params.en.md";
+        var mkdocs_page_url = "/WARP/en/params/params/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../" class="icon icon-home"> WARP Web Help
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Quick Start</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">UI and Workflow</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../workflow/workflow/">Interface Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../workflow/files/">Input and Output Files</a>
+                  </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Parameter Reference</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#environment">Environment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wave-measure-points">Wave measure points</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hyst-hydrostatics">HYST — Hydrostatics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#body-set-degrees-of-freedom">Body set — degrees of freedom</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mass-mechanics">MASS / Mechanics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-cases-nemohcal-frequencies-headings">Load Cases (Nemoh.cal frequencies / headings)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#solverinput_solvertxt">Solver（input_solver.txt）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#post-set">Post Set</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#qtf-set">QTF Set</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../results/">Results</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">WARP Web Help</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Parameter Reference</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/dgoffshore2000/WARP.git/edit/master/docs/params/params.en.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="parameter-reference">Parameter Reference</h1>
+<p>The location of each panel is shown in <a href="../../workflow/workflow/">Interface Overview and Workflow</a>. Most defaults follow Nemoh's recommendations; consult the <a href="https://lheea.gitlab.io/Nemoh/">Nemoh manual</a> for advanced tuning.</p>
+<hr />
+<h2 id="environment">Environment</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rho kg/m³</td>
+<td>water density</td>
+<td>1025.0</td>
+</tr>
+<tr>
+<td>Gravity m/s²</td>
+<td>gravitational acceleration</td>
+<td>9.81</td>
+</tr>
+<tr>
+<td>Water depth m</td>
+<td>water depth (finite depth; a large value approximates infinite depth)</td>
+<td>80.0 (example value — use your site value)</td>
+</tr>
+<tr>
+<td>Bodies</td>
+<td>number of floating bodies</td>
+<td>1 (single body only in this version)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wave-measure-points">Wave measure points</h2>
+<p>Space-fixed <code>x y</code> points where Nemoh reports free-surface elevation / wave time histories. One <code>x y</code> per row, paste two Excel columns directly; <strong>点数 + 生成</strong> fills rows by count. Leave the single default row <code>0  0</code> when not needed (no redundant points are written).</p>
+<h2 id="hyst-hydrostatics">HYST — Hydrostatics</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Symm XOZ 0/1</td>
+<td>symmetry about the XOZ plane (first two columns of the Nemoh mesh header: <code>2 0</code> = no XOZ symmetry, <code>2 1</code> = symmetric)</td>
+</tr>
+<tr>
+<td>Waterplane X Y</td>
+<td>origin of the waterplane in X, Y</td>
+</tr>
+<tr>
+<td>Tcol</td>
+<td>draft adjustment in Z</td>
+</tr>
+<tr>
+<td>IRR</td>
+<td>remove irregular frequencies</td>
+</tr>
+<tr>
+<td>COG x y z</td>
+<td>centre of gravity</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>: comparisons show the current hydrostatics results are driven by <strong>COG and Rho / Gravity</strong> (hydrosCal finds the equilibrium attitude from the waterplane). Symm / Waterplane / Tcol are kept for compatibility with desktop parameter files and do not change the SUMMARY numbers.</p>
+</blockquote>
+<p>Hydrostatics output goes to <code>mesh/</code> (<code>Hydrostatics.dat</code>, <code>Inertia_hull.dat</code>, <code>GC_hull.dat</code>, <code>KH.dat</code>); SUMMARY summarises those files. <code>Mechanics/</code> is created automatically and node / panel counts are taken from the mesh — no desktop-generated files are required.</p>
+<h2 id="body-set-degrees-of-freedom">Body set — degrees of freedom</h2>
+<p>Surge, Sway, Heave, Roll, Pitch, Yaw. Only ticked DOFs enter the radiation solve.</p>
+<h2 id="mass-mechanics">MASS / Mechanics</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Written to</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mass (kg)</td>
+<td><code>Mechanics/Inertia.dat</code></td>
+<td>structural mass</td>
+</tr>
+<tr>
+<td>Moment of inertia tensor (kg·m²)</td>
+<td><code>Mechanics/Inertia.dat</code></td>
+<td>3×3 tensor (default 0 = let the program handle it)</td>
+</tr>
+<tr>
+<td>Added damping D11..D66</td>
+<td><code>Mechanics/Badd.dat</code></td>
+<td>extra linear damping (e.g. damping devices)</td>
+</tr>
+<tr>
+<td>Added stiffness S11..S66</td>
+<td><code>Mechanics/Km.dat</code></td>
+<td>extra stiffness (e.g. mooring / elastic support)</td>
+</tr>
+</tbody>
+</table>
+<p>Matrix blocks can be pasted from Excel. Values are written when <strong>Save Mechanics</strong> is pressed; keep them at 0 unless extra damping or stiffness is required.</p>
+<h2 id="load-cases-nemohcal-frequencies-headings">Load Cases (Nemoh.cal frequencies / headings)</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Freq type</td>
+<td><code>1,2,3 = [rad/s, Hz, s]</code></td>
+</tr>
+<tr>
+<td>Min freq / Max freq / N freq</td>
+<td>lower limit, upper limit and count (Nemoh interpolates linearly)</td>
+</tr>
+<tr>
+<td>Min dir° / Max dir° / N dir°</td>
+<td>heading limits and count in degrees (0° = along +X)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="solverinput_solvertxt">Solver（input_solver.txt）</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GQ</td>
+<td>Gauss quadrature order: N² nodes per panel, N = 1–4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>eps_zmin</td>
+<td>source / field point lift: <code>zmin = eps_zmin × body_diameter</code>, avoids singularities</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>Solver</td>
+<td>0 = direct method (Gaussian elimination)</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>GMRES</strong> checkbox</td>
+<td>switch to the GMRES iterative solver (faster on large meshes)</td>
+<td><strong>off</strong></td>
+</tr>
+<tr>
+<td>Restart</td>
+<td>GMRES restart length</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Rel Tol</td>
+<td>relative convergence tolerance</td>
+<td>1e-5</td>
+</tr>
+<tr>
+<td>Max iter</td>
+<td>maximum iterations</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>GMRES guidance</strong>: the default direct method covers most cases; enable GMRES when mesh size makes memory or time prohibitive. 10 / 1e-5 / 1000 suits most models — if the log shows stalled convergence, raise Restart to 30–50.</p>
+</blockquote>
+<h2 id="post-set">Post Set</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRF a b c</td>
+<td>frequency range for the radiation IRF output: min / step / max</td>
+</tr>
+<tr>
+<td>Kochin a b c</td>
+<td>Kochin function angular range, recommended <code>361 0 360</code> (one per degree over the full circle)</td>
+</tr>
+<tr>
+<td>Free surface a b c</td>
+<td>free-surface output grid definition (min / step / max)</td>
+</tr>
+<tr>
+<td>Out freq type</td>
+<td><code>1,2,3 = [rad/s, Hz, s]</code></td>
+</tr>
+<tr>
+<td>Show pressure</td>
+<td>output panel pressure distribution</td>
+</tr>
+<tr>
+<td>Calculate RAO</td>
+<td>compute RAOs (<strong>MASS parameters must be saved first</strong>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="qtf-set">QTF Set</h2>
+<p><img alt="QTF Set" src="../../../figure/web_ui_04_run.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启用 QTF 计算</td>
+<td>master switch (RUN QTF requires it)</td>
+</tr>
+<tr>
+<td>QTF freq set: N / Min / Max</td>
+<td>count, lower and upper radial frequency for the QTF</td>
+</tr>
+<tr>
+<td>heading combination</td>
+<td><code>单向 β1=β2</code> (single heading) or <code>双向 全组合</code> (full bi-directional combination)</td>
+</tr>
+<tr>
+<td>Contrib</td>
+<td><code>1</code> DUOK only (near-field term); <code>2</code> DUOK+HASBO (+ potential terms); <code>3</code> full QTF (DUOK+HASBO+HASFS+ASYMP, requires free-surface integration)</td>
+</tr>
+<tr>
+<td>FS meshfile</td>
+<td>free-surface mesh file (Contrib 3 only; use <code>NA</code> if not applicable)</td>
+</tr>
+<tr>
+<td>FS QTF params</td>
+<td><code>Re, Nre, NBessel</code> for the free-surface integration (Contrib 3 only)</td>
+</tr>
+<tr>
+<td>include second-order hydrostatic restoring -[K]^H2</td>
+<td>second-order motion restoring term (with z-G coupling)</td>
+</tr>
+<tr>
+<td>output frequency</td>
+<td>QTFpostProc output type: <code>1,2,3 = [rad/s, Hz, s]</code></td>
+</tr>
+<tr>
+<td>QTFpostproc switches</td>
+<td>whether DUOK / HASBO / HASFS+ASYMP enter the total QTF output</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>QTF parameter combinations are intricate — follow the QTF chapter of the <a href="https://lheea.gitlab.io/Nemoh/">Nemoh manual</a>.</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../workflow/files/" class="btn btn-neutral float-left" title="Input and Output Files"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../results/" class="btn btn-neutral float-right" title="Results">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/dgoffshore2000/WARP.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../workflow/files/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../results/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../js/lang-switch.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
