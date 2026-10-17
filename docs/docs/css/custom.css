@@ -1,0 +1,9 @@
+.indent {
+  text-indent: 2em; 
+}
+.pre-space {
+  margin-left: 20px; /* 左侧缩进 20px */
+}
+.pre-space2 {
+  margin-left: 40px; /* 左侧缩进 20px */
+}

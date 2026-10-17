@@ -1,0 +1,4 @@
+# 构建在线帮助所需依赖（可选）
+# 用法：cd docs && pip install -r requirements.txt && mkdocs serve
+mkdocs>=1.5
+mkdocs-static-i18n>=1.0

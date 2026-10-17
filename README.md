@@ -4,6 +4,8 @@ WARP is a pre/post-processing tool for the open-source BEM solver **Nemoh** (LHE
 
 > Current version supports **single-body** parameter input. Multi-body analysis still requires manual editing of the `.cal` file.
 
+**Online help / 在线帮助**: <https://dgoffshore2000.github.io/WARP/> (中文 / English) · **UI language**: switch with the `中文 / ENGLISH` toggle at the top-right.
+
 ![screenshot](screenshot.png)
 
 ---

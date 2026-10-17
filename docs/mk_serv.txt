@@ -1,0 +1,6 @@
+pip install mkdocs
+
+
+cd my-docs 
+mkdocs serve
+http://localhost:8000

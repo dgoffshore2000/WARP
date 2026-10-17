@@ -1,0 +1,50 @@
+# mkdocs.yml — WARP Web 使用帮助（中 / EN）
+site_name: WARP Web Help
+theme:
+  name: readthedocs
+  language: zh
+
+nav:
+  - 首页: index.md
+  - 快速开始: quickstart.md
+  - 界面与工作流程:
+      - 界面总览与工作流程: workflow/workflow.md
+      - 输入与输出文件说明: workflow/files.md
+  - 参数详解: params/params.md
+  - 结果查看: results.md
+  - 常见问题 FAQ: faq.md
+  - 关于: about.md
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: false
+      reconfigure_search: true
+      languages:
+        - locale: zh
+          default: true
+          name: 中文
+          build: true
+        - locale: en
+          name: English
+          build: true
+          nav_translations:
+            首页: Home
+            快速开始: Quick Start
+            界面与工作流程: UI and Workflow
+            界面总览与工作流程: Interface Overview
+            输入与输出文件说明: Input and Output Files
+            参数详解: Parameter Reference
+            结果查看: Results
+            常见问题 FAQ: FAQ
+            关于: About
+
+extra_css:
+  - css/custom.css
+extra_javascript:
+  - js/lang-switch.js
+
+site_url: https://dgoffshore2000.github.io/WARP/
+repo_url: https://github.com/dgoffshore2000/WARP.git
