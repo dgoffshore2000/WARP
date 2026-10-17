@@ -20,6 +20,8 @@ import time
 import shutil
 
 import warp_core as wc
+from warp_i18n import tr, is_en
+import warp_i18n as i18n
 
 # 供 3D 网格查看器加载 STL：/mesh_files/<model>/mesh_view.stl
 app.add_static_files('/mesh_files', os.path.join(wc.BASE_DIR, 'db'))
@@ -159,10 +161,10 @@ def _make_paste_handler(keys2d, inputs2d):
                         P[keys2d[ii][jj]] = val
                         inputs2d[ii][jj].value = val
                         n += 1
-            ui.notify('已从剪贴板粘贴 %d 个单元格（起点 r%d c%d）' % (n, si + 1, sj + 1),
+            ui.notify(tr('已从剪贴板粘贴 %d 个单元格（起点 r%d c%d）') % (n, si + 1, sj + 1),
                       type='positive')
         except Exception as ex:
-            ui.notify('粘贴失败：%s' % ex, type='negative')
+            ui.notify(tr('粘贴失败：%s') % ex, type='negative')
     return handle
 
 
@@ -245,11 +247,11 @@ def cog_fields():
                 n += 1
         write_back()
         if n:
-            ui.notify('已粘贴 COG %d 个值（起点第 %d 格）' % (n, sj + 1),
+            ui.notify(tr('已粘贴 COG %d 个值（起点第 %d 格）') % (n, sj + 1),
                       type='positive')
 
     with ui.row().classes('items-center gap-3 flex-wrap'):
-        ui.label('COG 重心位置').classes('text-sm opacity-70')
+        ui.label(tr('COG 重心位置')).classes('text-sm opacity-70')
         with ui.grid(columns=4).classes('gap-0 w-fit border border-gray-600 warp-grid cog-grid'):
             ui.label('').classes('px-2 py-1 border-b border-gray-600')
             for ax in ('x', 'y', 'z'):
@@ -261,7 +263,7 @@ def cog_fields():
                 inp = ui.input('', value=vals[i], on_change=on_part(i)) \
                     .props('dense outlined hide-bottom-space') \
                     .classes('w-24 text-right rounded-none warp-cell') \
-                    .tooltip('重心 %s 坐标；可拖拽框选后粘贴 Excel 数据' % 'XYZ'[i])
+                    .tooltip(tr('重心 %s 坐标；可拖拽框选后粘贴 Excel 数据') % 'XYZ'[i])
                 refs.append(inp)
             for inp in refs:
                 _wire_grid_cell(inp, 3, paste_h)
@@ -312,7 +314,7 @@ def wave_points_grid():
                                                       idx, col, e.value))()) \
                             .props('dense outlined hide-bottom-space') \
                             .classes('w-24 text-right rounded-none warp-cell') \
-                            .tooltip('测量点 %s 坐标；可拖拽框选后粘贴 Excel 数据'
+                            .tooltip(tr('测量点 %s 坐标；可拖拽框选后粘贴 Excel 数据')
                                      % 'xy'[j])
                         _wire_grid_cell(inp, 2, paste_h)
 
@@ -350,11 +352,11 @@ def wave_points_grid():
         write_back()
         rebuild()
         if n:
-            ui.notify('已粘贴测量点 %d 个值（起点 P%d 第 %d 列）'
+            ui.notify(tr('已粘贴测量点 %d 个值（起点 P%d 第 %d 列）')
                       % (n, r0 + 1, c0 + 1), type='positive')
 
     with ui.expansion('Wave measure points',
-                      caption='每行一个 "x y"，可框选后直接粘贴 Excel 数据',
+                      caption=tr('每行一个 "x y"，可框选后直接粘贴 Excel 数据'),
                       value=True).classes('w-full border border-gray-600 '
                                           'rounded-lg px-3'):
         with ui.row().classes('items-center gap-2'):
@@ -362,10 +364,10 @@ def wave_points_grid():
                 try:
                     n = int(gen_input.value)
                 except (TypeError, ValueError):
-                    ui.notify('请输入点数', type='warning')
+                    ui.notify(tr('请输入点数'), type='warning')
                     return
                 if not 1 <= n <= 500:
-                    ui.notify('点数需在 1-500 之间', type='warning')
+                    ui.notify(tr('点数需在 1-500 之间'), type='warning')
                     return
                 cur = box['rows'] or []
                 # 保留前 n 行已有数据，多退少补空行
@@ -373,7 +375,7 @@ def wave_points_grid():
                                for i in range(n)]
                 write_back()
                 rebuild()
-                ui.notify('已生成 %d 个测量点行' % n, type='positive')
+                ui.notify(tr('已生成 %d 个测量点行') % n, type='positive')
 
             def add_row():
                 box['rows'].append(['', ''])
@@ -386,15 +388,15 @@ def wave_points_grid():
                     write_back()
                 rebuild()
 
-            gen_input = ui.number('点数', value=max(len(parse_rows()), 1),
+            gen_input = ui.number(tr('点数'), value=max(len(parse_rows()), 1),
                                   precision=0, min=1, max=500) \
                 .props('dense outlined hide-bottom-space').classes('w-24') \
-                .tooltip('点击"生成"直接创建对应数量的测量点行')
-            ui.button('生成', on_click=gen_rows).props('dense outline size=sm')
-            ui.button('+ 行', on_click=add_row).props('dense outline size=sm')
-            ui.button('删行', on_click=del_row) \
+                .tooltip(tr('点击"生成"直接创建对应数量的测量点行'))
+            ui.button(tr('生成'), on_click=gen_rows).props('dense outline size=sm')
+            ui.button(tr('+ 行'), on_click=add_row).props('dense outline size=sm')
+            ui.button(tr('删行'), on_click=del_row) \
                 .props('dense outline size=sm') \
-                .tooltip('删除最后一行')
+                .tooltip(tr('删除最后一行'))
         box['holder'] = ui.column().classes('gap-0')
     box['rows'] = None
     rebuild()
@@ -431,12 +433,12 @@ def qtf_freq_fields():
         return handler
 
     outs = []
-    for idx, (label, tip) in enumerate((('N freq', '径向频率个数'),
-                                        ('Min freq', '最小频率 rad/s'),
-                                        ('Max freq', '最大频率 rad/s'))):
+    for idx, (label, tip) in enumerate((('N freq', tr('径向频率个数')),
+                                        ('Min freq', tr('最小频率 rad/s')),
+                                        ('Max freq', tr('最大频率 rad/s')))):
         outs.append(ui.input(label, value=vals[idx], on_change=on_part(idx))
                     .props('dense outlined hide-bottom-space')
-                    .classes('w-24').tooltip(tip + '（QTF 仅接受 rad/s）'))
+                    .classes('w-24').tooltip(tip + tr('（QTF 仅接受 rad/s）')))
     return outs
 
 
@@ -534,10 +536,10 @@ def matrix_grid(prefix):
 def act_new_model(new_input, model_sel):
     name = (new_input.value or "").strip()
     if not name:
-        ui.notify('请输入模型名', type='warning')
+        ui.notify(tr('请输入模型名'), type='warning')
         return
     if any(ch in name for ch in '\\/:*?"<>|'):
-        ui.notify('模型名含非法字符', type='negative')
+        ui.notify(tr('模型名含非法字符'), type='negative')
         return
     import os
     d = wc.model_dir(name)
@@ -547,7 +549,7 @@ def act_new_model(new_input, model_sel):
     model_sel.update()
     model_sel.value = name
     new_input.value = ""
-    ui.notify('已创建 db/' + name + '（网格请用桌面版 MODEL 页生成后放入 mesh/）',
+    ui.notify(tr('已创建 db/') + name + tr('（网格请用桌面版 MODEL 页生成后放入 mesh/）'),
               type='positive')
 
 
@@ -556,31 +558,31 @@ def act_delete_model(model_sel, mesh_holder):
     弹确认窗口；有计算运行时禁止删除；删除前做路径校验（必须位于 db/ 一级子目录）。"""
     name = model_sel.value
     if not name:
-        ui.notify('未选择模型', type='warning')
+        ui.notify(tr('未选择模型'), type='warning')
         return
     if wc.RUN.snapshot()["status"] == "running":
-        ui.notify('有计算正在运行，请等待结束或完成后再删除模型', type='negative')
+        ui.notify(tr('有计算正在运行，请等待结束或完成后再删除模型'), type='negative')
         return
     # 安全校验：只允许删除 db/ 下一级且真实存在的模型目录
     d = os.path.realpath(wc.model_dir(name))
     db_root = os.path.realpath(os.path.join(wc.BASE_DIR, 'db'))
     if os.path.dirname(d) != db_root or not os.path.isdir(d):
-        ui.notify('路径校验失败，拒绝删除', type='negative')
+        ui.notify(tr('路径校验失败，拒绝删除'), type='negative')
         return
 
     with ui.dialog() as dlg, ui.card().classes('min-w-[360px]'):
-        ui.label('确认删除模型').classes('text-base font-semibold')
-        ui.label('将永久删除文件夹 db/%s（含网格、计算结果等全部文件），'
-                 '此操作不可恢复！' % name).classes('text-sm')
+        ui.label(tr('确认删除模型')).classes('text-base font-semibold')
+        ui.label(tr('将永久删除文件夹 db/%s（含网格、计算结果等全部文件），'
+                    '此操作不可恢复！') % name).classes('text-sm')
         with ui.row().classes('w-full justify-end gap-2'):
-            ui.button('取消', on_click=dlg.close).props('flat')
+            ui.button(tr('取消'), on_click=dlg.close).props('flat')
 
             def do_del():
                 dlg.close()
                 try:
                     shutil.rmtree(d)
                 except Exception as ex:
-                    ui.notify('删除失败：%s' % ex, type='negative')
+                    ui.notify(tr('删除失败：%s') % ex, type='negative')
                     return
                 models = wc.list_models()
                 P["model_name"] = models[0] if models else ''
@@ -592,10 +594,10 @@ def act_delete_model(model_sel, mesh_holder):
                 sc = mesh_holder.get('scene')
                 if sc is not None and _mesh_loaded(sc) and not models:
                     sc.clear()
-                    mesh_holder['info'].set_text('网格：未加载')
-                ui.notify('已删除 db/' + name, type='positive')
+                    mesh_holder['info'].set_text(tr('网格：未加载'))
+                ui.notify(tr('已删除 db/') + name, type='positive')
 
-            ui.button('删除', on_click=do_del).props('color=negative')
+            ui.button(tr('删除'), on_click=do_del).props('color=negative')
     dlg.open()
 
 
@@ -603,7 +605,7 @@ def act_save_cal(log):
     try:
         for n in wc.write_nemoh_cal(P):
             log.push(n)
-        ui.notify('Nemoh.cal 已生成', type='positive')
+        ui.notify(tr('Nemoh.cal 已生成'), type='positive')
     except Exception as e:
         ui.notify(str(e), type='negative')
 
@@ -621,7 +623,7 @@ def act_run(kind, log):
     try:
         wc.RUN.start(kind, P)
         log.push('=== Run %s started (model: %s) ===' % (kind.upper(), P["model_name"]))
-        ui.notify('%s 运行已启动' % kind.upper())
+        ui.notify(tr('%s 运行已启动') % kind.upper())
     except Exception as e:
         ui.notify(str(e), type='negative')
 
@@ -629,7 +631,7 @@ def act_run(kind, log):
 def act_hyst_summary(out_label):
     try:
         r = wc.hydros_summary(P)
-        text = (
+        text = tr(
             '浮心/重心 (m):  XF %s | XG %s\n'
             '               YF %s | YG %s\n'
             '               ZF %s | ZG %s\n'
@@ -648,9 +650,9 @@ def act_hyst_summary(out_label):
              r["krx"][1] if len(r["krx"]) > 1 else '-',
              r["kry"][2] if len(r["kry"]) > 2 else '-')
         out_label.set_text(text)
-        ui.notify('静水力摘要已更新', type='positive')
+        ui.notify(tr('静水力摘要已更新'), type='positive')
     except FileNotFoundError as e:
-        ui.notify('mesh/ 产物缺失（先 Run HYST）：%s' % e.filename, type='warning')
+        ui.notify(tr('mesh/ 产物缺失（先 Run HYST）：%s') % e.filename, type='warning')
     except Exception as e:
         ui.notify(str(e), type='negative')
 
@@ -667,7 +669,7 @@ def act_load_mesh(info_label, scene_box, wire_checkbox):
         edge_segs, _ = wc.build_mesh_edges(P["model_name"])
     except Exception as e:
         ui.notify(str(e), type='negative')
-        info_label.set_text('加载失败：%s' % e)
+        info_label.set_text(tr('加载失败：%s') % e)
         return
     _hex = (scene_box._props.get('background-color') or '#ffffff').lstrip('#')
     try:
@@ -775,11 +777,11 @@ def act_load_mesh(info_label, scene_box, wire_checkbox):
           }
         })();
     ''')
-    sym = ('XOZ 镜像' if st["sym_y"] else '') + (' + YOZ 镜像' if st["sym_x"] else '')
+    sym = (tr('XOZ 镜像') if st["sym_y"] else '') + (tr(' + YOZ 镜像') if st["sym_x"] else '')
     info_label.set_text(
-        '节点 %d · 面片 %d（镜像 %d 次补全 → %d 三角面 / %d 网格线） · 对称: %s · 范围 x[%g, %g] y[%g, %g] z[%g, %g]'
+        tr('节点 %d · 面片 %d（镜像 %d 次补全 → %d 三角面 / %d 网格线） · 对称: %s · 范围 x[%g, %g] y[%g, %g] z[%g, %g]')
         % (st["n_nodes"], st["n_panels"], st["n_mirror"], st["n_tris"],
-           len(edge_segs), sym or '无', bx[0], bx[1], bx[2], bx[3], bx[4], bx[5]))
+           len(edge_segs), sym or tr('无'), bx[0], bx[1], bx[2], bx[3], bx[4], bx[5]))
 
 
 def _mesh_loaded(scene_box):
@@ -838,10 +840,10 @@ def poll_run(log, status_labels):
     # 运行结束通知一次
     if _poll_state["prev_status"] == "running" and snap["status"] in ("done", "failed"):
         if snap["status"] == "done":
-            ui.notify('%s 运行完成 (%.0fs)' % (snap["kind"].upper(), snap["elapsed"]),
+            ui.notify(tr('%s 运行完成 (%.0fs)') % (snap["kind"].upper(), snap["elapsed"]),
                       type='positive')
         else:
-            ui.notify('%s 运行失败，请检查日志' % snap["kind"].upper(), type='negative')
+            ui.notify(tr('%s 运行失败，请检查日志') % snap["kind"].upper(), type='negative')
     _poll_state["prev_status"] = snap["status"]
 
 
@@ -849,12 +851,12 @@ def refresh_results(res_type, dof_i, dof_j, direc_sel, chart, x_sel=None):
     model = P["model_name"]
     data = wc.get_results(model)
     if not data.get("ok"):
-        ui.notify('；'.join(data["errors"]) or '无结果', type='warning')
+        ui.notify('；'.join(data["errors"]) or tr('无结果'), type='warning')
         return
     sec_key = res_type.value
     sec = data["sections"].get(sec_key)
     if sec is None:
-        ui.notify('该结果不存在（%s）：%s' % (sec_key, '；'.join(data["errors"])),
+        ui.notify(tr('该结果不存在（%s）：%s') % (sec_key, '；'.join(data["errors"])),
                   type='warning')
         return
     i = int(dof_i.value)
@@ -866,7 +868,7 @@ def refresh_results(res_type, dof_i, dof_j, direc_sel, chart, x_sel=None):
 
     # 自动同步方向下拉选项（免去手动点"加载方向列表"）：
     # 保持当前选择；若原选项不在新列表中则回到"所有方向"
-    _opts = {-1: '所有方向',
+    _opts = {-1: tr('所有方向'),
              **{i2: ('Wave %.0f°' % dd) for i2, dd in enumerate(dirdegs)}}
     if direc_sel.options != _opts:
         _cur = direc_sel.value
@@ -953,12 +955,12 @@ def load_qtf_options(qtf_set, qtf_beta, qtf_dof):
     """读取 QTF 结果并填充 浪向对/DOF 下拉框"""
     data = wc.get_qtf_results(P["model_name"])
     if not data.get("ok"):
-        ui.notify('；'.join(data["errors"]) or '无 QTF 结果', type='warning')
+        ui.notify('；'.join(data["errors"]) or tr('无 QTF 结果'), type='warning')
         return None
     key = qtf_set.value
     st = data["sets"].get(key)
     if not st:
-        ui.notify('该模型无 %s 结果文件' % ('差频 QTFM' if key == 'qtfm' else '和频 QTFP'),
+        ui.notify(tr('该模型无 %s 结果文件') % (tr('差频 QTFM') if key == 'qtfm' else tr('和频 QTFP')),
                   type='warning')
         return None
     cur_beta = qtf_beta.value
@@ -980,12 +982,12 @@ def refresh_qtf_diag(qtf_set2, qtf_dof2, qtf_qty2, qtf_x2, chart2):
     样式与 Results 卡一致（数值横轴 + 顶部图例 + 圆点折线）"""
     data = wc.get_qtf_results(P["model_name"])
     if not data.get("ok"):
-        ui.notify('；'.join(data["errors"]) or '无 QTF 结果', type='warning')
+        ui.notify('；'.join(data["errors"]) or tr('无 QTF 结果'), type='warning')
         return
     key = qtf_set2.value
     st = data["sets"].get(key)
     if not st:
-        ui.notify('该模型无 %s 结果' % key, type='warning')
+        ui.notify(tr('该模型无 %s 结果') % key, type='warning')
         return
     dof = int(qtf_dof2.value)          # 界面 0 基
     gkey = "%g,%g,%d" % (0.0, 0.0, dof + 1)
@@ -1019,12 +1021,12 @@ def refresh_qtf_diag(qtf_set2, qtf_dof2, qtf_qty2, qtf_x2, chart2):
         diag = [g[i][i][col] if g[i][i] is not None else None for i in range(n)]
         series.append({"name": 'β %g°/%g°' % (b1, b2), "data": xy(xs, diag)})
     if not series:
-        ui.notify('无对角线数据', type='warning')
+        ui.notify(tr('无对角线数据'), type='warning')
         return
-    title_set = '差频 QTFM (ω1-ω2)' if key == 'qtfm' else '和频 QTFP (ω1+ω2)'
+    title_set = tr('差频 QTFM (ω1-ω2)') if key == 'qtfm' else tr('和频 QTFP (ω1+ω2)')
     qty_name = {'mod': '|QTF|/ρg', 'phase': 'PHASE [deg]',
                 're': 'Re(QTF)/ρg', 'im': 'Im(QTF)/ρg'}[qtf_qty2.value]
-    title = '%s 主对角线 ω1=ω2 · %s · %s (%s)' % (
+    title = tr('%s 主对角线 ω1=ω2 · %s · %s (%s)') % (
         title_set, data["dofs"][dof], qty_name, P["model_name"])
     chart2.options.clear()
     chart2.options.update({
@@ -1134,12 +1136,12 @@ def _qtf_fill_chart(chart, ws, g, qty, labels, xlabel, tick_int):
 def refresh_qtf(qtf_set, qtf_beta, qtf_dof, qtf_x, charts, ctx_label=None):
     data = wc.get_qtf_results(P["model_name"])
     if not data.get("ok"):
-        ui.notify('；'.join(data["errors"]) or '无 QTF 结果', type='warning')
+        ui.notify('；'.join(data["errors"]) or tr('无 QTF 结果'), type='warning')
         return
     key = qtf_set.value
     st = data["sets"].get(key)
     if not st:
-        ui.notify('该模型无 %s 结果' % key, type='warning')
+        ui.notify(tr('该模型无 %s 结果') % key, type='warning')
         return
     beta = st["betas"][int(qtf_beta.value)] if int(qtf_beta.value) < len(st["betas"]) \
         else st["betas"][0]
@@ -1147,14 +1149,14 @@ def refresh_qtf(qtf_set, qtf_beta, qtf_dof, qtf_x, charts, ctx_label=None):
     gkey = "%g,%g,%d" % (beta[0], beta[1], dof + 1)   # 文件 DOF 列为 1 基
     g = st["data"].get(gkey)
     if g is None:
-        ui.notify('无该 (方向, DOF) 组合的数据', type='warning')
+        ui.notify(tr('无该 (方向, DOF) 组合的数据'), type='warning')
         return
     ws = st["w"]
     n = len(ws)
     xmode = qtf_x.value
     labels, vals, xlabel = _qtf_axis_labels(ws, xmode)
     # 分类轴按 ω 升序排列（period 模式下标签是降序周期，但格子与 ω 一一对应）
-    title_set = '差频 QTFM (ω1-ω2)' if key == 'qtfm' else '和频 QTFP (ω1+ω2)'
+    title_set = tr('差频 QTFM (ω1-ω2)') if key == 'qtfm' else tr('和频 QTFP (ω1+ω2)')
     ctx = '%s · %s · β %g°/%g° (%s)' % (
         title_set, data["dofs"][dof], beta[0], beta[1], P["model_name"])
     if ctx_label is not None:
@@ -1177,9 +1179,17 @@ def index():
 
     # 顶栏
     mesh_holder = {}   # 3D 网格控件引用（顶栏先建、卡片后建，切换模型时回调取用）
+    def _switch_lang(lang):
+        i18n.set_lang(lang)
+        ui.navigate.reload()
+
     with ui.row().classes('w-full items-center gap-3 px-4 py-2'):
         ui.label('WARP Web').classes('text-2xl font-bold')
-        ui.label('Nemoh BEM + QTF · Web 原型').classes('text-sm opacity-60')
+        ui.label(tr('Nemoh BEM + QTF · Web 原型')).classes('text-sm opacity-60')
+        ui.space()
+        ui.toggle({'zh': '中文', 'en': 'English'}, value=i18n.LANG,
+                  on_change=lambda e: _switch_lang(e.value)) \
+            .props('dense unelevated').classes('text-xs')
 
     # 模型选择行（标题下方、参数卡上方）。
     # 模型列表每次进页面实时扫描：MODELS 若只在启动时快照，新建模型后刷新页面
@@ -1192,12 +1202,12 @@ def index():
                               on_change=lambda e: _on_model_change(e, mesh_holder)) \
             .classes('w-48')
         new_input = ui.input('New model name').props('dense outlined').classes('w-40')
-        ui.button('新建', on_click=lambda: act_new_model(new_input, model_sel)) \
+        ui.button(tr('新建'), on_click=lambda: act_new_model(new_input, model_sel)) \
             .props('dense outline')
-        ui.button('删除', on_click=lambda: act_delete_model(model_sel, mesh_holder)) \
+        ui.button(tr('删除'), on_click=lambda: act_delete_model(model_sel, mesh_holder)) \
             .props('dense outline color=negative') \
-            .tooltip('删除当前选中模型的文件夹（需确认）')
-        ui.label('※ 网格生成（MODEL 页）仍用桌面版；本页支持 3D 网格预览 + CASE/RUN/PLOT。') \
+            .tooltip(tr('删除当前选中模型的文件夹（需确认）'))
+        ui.label(tr('※ 网格生成（MODEL 页）仍用桌面版；本页支持 3D 网格预览 + CASE/RUN/PLOT。')) \
             .classes('text-xs opacity-50')
 
     with ui.row().classes('w-full items-stretch gap-3 px-4 flex-wrap'):
@@ -1215,21 +1225,21 @@ def index():
                     num_input('Bodies', 'num_bodies', cls='w-24')
                 wave_points_grid()
             with ui.card().classes('w-full'):
-                ui.label('HYST — Hydrostatics（静水力，bin/preProc.exe → bin/hydrosCal.exe）').classes('font-semibold')
+                ui.label(tr('HYST — Hydrostatics（静水力，bin/preProc.exe → bin/hydrosCal.exe）')).classes('font-semibold')
                 with ui.row().classes('items-center gap-2 flex-wrap'):
                     num_input('Symm XOZ 0/1', 'hyst_xoz', '0 no; 1 yes', 'w-32')
-                    num_input('Waterplane X Y', 'hyst_xoy', '水线面原点 X Y', 'w-36')
-                    num_input('Tcol', 'hyst_tcol', '水线 Z 向移动（吃水调整）', 'w-24')
-                    ui.checkbox('IRR 去除不规则频率',
+                    num_input('Waterplane X Y', 'hyst_xoy', tr('水线面原点 X Y'), 'w-36')
+                    num_input('Tcol', 'hyst_tcol', tr('水线 Z 向移动（吃水调整）'), 'w-24')
+                    ui.checkbox(tr('IRR 去除不规则频率'),
                                 value=(str(P.get('hyst_irr', '0')) == '1'),
                                 on_change=bind_bool01('hyst_irr')) \
-                        .tooltip('IRR 后处理开关。mesh.cal 第 6 行固定写 2（去除不规则频率）。'
-                                 '当前链路（preProc + hydrosCal）不修改 <model>.dat，'
-                                 '此勾选仅保留参数记录。默认不勾选')
+                        .tooltip(tr('IRR 后处理开关。mesh.cal 第 6 行固定写 2（去除不规则频率）。'
+                                    '当前链路（preProc + hydrosCal）不修改 <model>.dat，'
+                                    '此勾选仅保留参数记录。默认不勾选'))
                 # COG 重心：X/Y/Z 分开输入，支持 Excel 粘贴（多列自动分发）
                 cog_fields()
-                ui.label('Rho / Gravity 共用上方 Environment 值；hydrosCal 产物写入 mesh/'
-                         '（Hydrostatics.dat、Inertia_hull.dat、KH.dat 等），Summary 按其结果总结静水力') \
+                ui.label(tr('Rho / Gravity 共用上方 Environment 值；hydrosCal 产物写入 mesh/'
+                            '（Hydrostatics.dat、Inertia_hull.dat、KH.dat 等），Summary 按其结果总结静水力')) \
                     .classes('text-xs opacity-50')
                 with ui.row().classes('gap-2 flex-wrap items-center'):
                     ui.button('▶ Run HYST', on_click=lambda: act_run("hyst", log)) \
@@ -1244,17 +1254,17 @@ def index():
         # ---------------- 右列：MODEL 3D Mesh 预览 ----------------
         with ui.column().classes('gap-2 flex-1 min-w-0'):
             with ui.card().classes('w-full'):
-                ui.label('MODEL — 3D Mesh（Nemoh 网格三维预览）').classes('font-semibold')
+                ui.label(tr('MODEL — 3D Mesh（Nemoh 网格三维预览）')).classes('font-semibold')
                 with ui.row().classes('items-center gap-3 flex-wrap'):
-                    ui.button('🔄 加载网格', on_click=lambda: act_load_mesh(
+                    ui.button(tr('🔄 加载网格'), on_click=lambda: act_load_mesh(
                         mesh_info, mesh_scene, mesh_wire)) \
                         .props('dense').classes('bg-sky-600')
-                    mesh_wire = ui.checkbox('仅线框（不填充）', value=True,
+                    mesh_wire = ui.checkbox(tr('仅线框（不填充）'), value=True,
                                             on_change=lambda e: _mesh_reload(
                                                 mesh_info, mesh_scene, mesh_wire))
-                    mesh_bg = ui.select({'#ffffff': '白（参考图）', '#e9edf2': '浅灰',
-                                         '#101826': '深蓝灰', '#000000': '黑'},
-                                        value='#ffffff', label='背景颜色') \
+                    mesh_bg = ui.select({'#ffffff': tr('白（参考图）'), '#e9edf2': tr('浅灰'),
+                                         '#101826': tr('深蓝灰'), '#000000': tr('黑')},
+                                        value='#ffffff', label=tr('背景颜色')) \
                         .props('dense outlined').classes('w-36')
                 # grid=False：NiceGUI 场景的 grid 会自带一块 z=-0.01 的不透明地面板，
                 # 而船体网格在 z<=0（吃水以下），会被完全遮住
@@ -1290,7 +1300,7 @@ def index():
                     if _had:
                         act_load_mesh(mesh_info, mesh_scene, mesh_wire)
                 mesh_bg.on('update:model-value', _mesh_bg_change)
-                mesh_info = ui.label('解析 db/<model>/<model>.dat 并渲染；首行对称标志自动镜像补全半模') \
+                mesh_info = ui.label(tr('解析 db/<model>/<model>.dat 并渲染；首行对称标志自动镜像补全半模')) \
                     .classes('text-xs opacity-50')
                 # 默认不自动加载；点"🔄 加载网格"按钮后，顶栏切换模型才自动刷新
                 mesh_holder['scene'] = mesh_scene
@@ -1306,7 +1316,7 @@ def index():
                     for key, label in DOF_KEYS:
                         bool_input(key, label)
 
-            with ui.expansion('MASS / Mechanics（Inertia + 阻尼 + 刚度）').classes('w-full'):
+            with ui.expansion(tr('MASS / Mechanics（Inertia + 阻尼 + 刚度）')).classes('w-full'):
                 ui.label('Mass (kg):').classes('text-sm font-semibold opacity-80')
                 num_input('', 'mass', cls='w-40')
                 ui.label('Moment of inertia tensor (kg.m^2):') \
@@ -1333,20 +1343,20 @@ def index():
                             _wire_grid_cell(inp, 3, _inertia_paste)
                             _inertia_inputs[i][j] = inp
                 ui.separator()
-                ui.label('附加阻尼 D11..D66（badd.dat，空 = 0）').classes('text-sm opacity-70')
-                ui.label('鼠标从左上角拖拽框选矩阵区域 → 在 Excel 复制 → Ctrl+V 整块粘贴') \
+                ui.label(tr('附加阻尼 D11..D66（badd.dat，空 = 0）')).classes('text-sm opacity-70')
+                ui.label(tr('鼠标从左上角拖拽框选矩阵区域 → 在 Excel 复制 → Ctrl+V 整块粘贴')) \
                     .classes('text-xs opacity-50')
                 matrix_grid('d')
                 ui.separator()
-                ui.label('附加刚度 S11..S66（km.dat，空 = 0）').classes('text-sm opacity-70')
-                ui.label('鼠标从左上角拖拽框选矩阵区域 → 在 Excel 复制 → Ctrl+V 整块粘贴') \
+                ui.label(tr('附加刚度 S11..S66（km.dat，空 = 0）')).classes('text-sm opacity-70')
+                ui.label(tr('鼠标从左上角拖拽框选矩阵区域 → 在 Excel 复制 → Ctrl+V 整块粘贴')) \
                     .classes('text-xs opacity-50')
                 matrix_grid('s')
 
-            with ui.expansion('Load Cases（Nemoh.cal 波浪频率/浪向）').classes('w-full'):
+            with ui.expansion(tr('Load Cases（Nemoh.cal 波浪频率/浪向）')).classes('w-full'):
                 with ui.row().classes('items-center gap-2 flex-wrap'):
                     ui.label('Freq type').classes('text-sm opacity-70')
-                    ui.toggle({1: 'rad/s', 2: 'Hz', 3: '周期 s'},
+                    ui.toggle({1: 'rad/s', 2: 'Hz', 3: tr('周期 s')},
                               value=(int(P['freq_type'])
                                      if str(P['freq_type']) in ('1', '2', '3') else 1),
                               on_change=bind_str('freq_type'))
@@ -1363,7 +1373,7 @@ def index():
                     num_input('GQ', 'gq', 'N^2 GQ Nodes, N(1,4)', 'w-24')
                     num_input('eps_zmin', 'eps', 'zmin=eps_zmin*body_diameter', 'w-32')
                     num_input('Solver', 'solver',
-                              '0 GAUSS ELIM.; 1 LU DECOMP.（勾选 GMRES 时忽略，自动写 2）', 'w-24')
+                              tr('0 GAUSS ELIM.; 1 LU DECOMP.（勾选 GMRES 时忽略，自动写 2）'), 'w-24')
                 with ui.row().classes('items-center gap-2 flex-wrap'):
                     def _gmres_toggle(v):
                         (g_r.enable if v else g_r.disable)()
@@ -1376,12 +1386,12 @@ def index():
                     gmres_chk = ui.checkbox(
                         'GMRES', value=(str(P.get('use_gmres', '0')) == '1'),
                         on_change=_gmres_change) \
-                        .tooltip('勾选后线性方程组改用 GMRES 迭代法求解（solver 行写 2），'
-                                 '适合大规模网格；不勾选时用上方 Solver 选项'
-                                 '（0 高斯消元 / 1 LU 分解）')
-                    g_r = num_input('Restart', 'gmres_restart', 'GMRES 重启参数', 'w-20')
-                    g_t = num_input('Rel Tol', 'gmres_tol', 'GMRES 相对容差', 'w-24')
-                    g_m = num_input('Max iter', 'gmres_maxit', 'GMRES 最大迭代次数', 'w-24')
+                        .tooltip(tr('勾选后线性方程组改用 GMRES 迭代法求解（solver 行写 2），'
+                                    '适合大规模网格；不勾选时用上方 Solver 选项'
+                                    '（0 高斯消元 / 1 LU 分解）'))
+                    g_r = num_input('Restart', 'gmres_restart', tr('GMRES 重启参数'), 'w-20')
+                    g_t = num_input('Rel Tol', 'gmres_tol', tr('GMRES 相对容差'), 'w-24')
+                    g_m = num_input('Max iter', 'gmres_maxit', tr('GMRES 最大迭代次数'), 'w-24')
                     _gmres_toggle(gmres_chk.value)
 
             with ui.expansion('Post Set').classes('w-full'):
@@ -1391,7 +1401,7 @@ def index():
                 with ui.row().classes('items-center gap-2 flex-wrap'):
                     num_input('Free surface a b c d', 'free_surface', cls='w-44')
                     ui.label('Out freq type').classes('text-sm opacity-70')
-                    ui.toggle({1: 'rad/s', 2: 'Hz', 3: '周期 s'},
+                    ui.toggle({1: 'rad/s', 2: 'Hz', 3: tr('周期 s')},
                               value=(int(P['out_freq_type'])
                                      if str(P['out_freq_type']) in ('1', '2', '3') else 1),
                               on_change=bind_str('out_freq_type'))
@@ -1401,49 +1411,49 @@ def index():
 
             with ui.expansion('QTF Set').classes('w-full'):
                 qtf_refs = {}
-                ui.checkbox('启用 QTF 计算', value=bool(P['qtf']),
+                ui.checkbox(tr('启用 QTF 计算'), value=bool(P['qtf']),
                             on_change=lambda e: (P.__setitem__('qtf', e.value),
                                                  _sync_qtf(qtf_refs)))
                 with ui.column().classes('gap-2 w-full'):
                     with ui.row().classes('items-center gap-2 flex-wrap'):
                         ui.label('QTF freq set').classes('text-sm opacity-70')
                         qtf_refs['qtff'] = qtf_freq_fields()
-                        ui.label('浪向组合').classes('text-sm opacity-70')
+                        ui.label(tr('浪向组合')).classes('text-sm opacity-70')
                         qtf_refs['qtfd'] = ui.toggle(
-                            {0: '单向 β1=β2', 1: '双向 全组合'},
+                            {0: tr('单向 β1=β2'), 1: tr('双向 全组合')},
                             value=int(P['qtfd'] or 0), on_change=bind_str('qtfd'))
                     with ui.row().classes('items-center gap-2 flex-wrap'):
-                        ui.label('Contrib（计算内容）').classes('text-sm opacity-70')
+                        ui.label(tr('Contrib（计算内容）')).classes('text-sm opacity-70')
                         qtf_refs['qtfc'] = ui.toggle(
-                            {1: '仅 DUOK（近场二次项）', 2: 'DUOK+HASBO（+势项）',
-                             3: '完整 QTF（+自由面积分）'},
+                            {1: tr('仅 DUOK（近场二次项）'), 2: tr('DUOK+HASBO（+势项）'),
+                             3: tr('完整 QTF（+自由面积分）')},
                             value=(int(P['qtfc']) if str(P['qtfc']) in ('1', '2', '3') else None),
                             on_change=lambda e: _on_qtf_contrib(e, qtf_refs))
                     with ui.row().classes('items-center gap-2 flex-wrap'):
                         qtf_refs['fsmf'] = num_input('FS meshfile', 'fsmf',
-                                                     '仅 Contrib=3：自由面网格文件', 'w-40')
+                                                     tr('仅 Contrib=3：自由面网格文件'), 'w-40')
                         qtf_refs['fsmf_qtf'] = num_input('FS QTF params', 'fsmf_qtf',
-                                                         'Re Nre NBessel（Bessel 默认 30）', 'w-40')
+                                                         tr('Re Nre NBessel（Bessel 默认 30）'), 'w-40')
                     qtf_refs['hys_term'] = ui.checkbox(
-                        '计入二阶运动水静力恢复项 −[K]ξ̃⁽²⁾（含 z_G 耦合）',
+                        tr('计入二阶运动水静力恢复项 −[K]ξ̃⁽²⁾（含 z_G 耦合）'),
                         value=P['hys_term'] == '1', on_change=bind_bool01('hys_term'))
                     with ui.row().classes('items-center gap-2'):
-                        ui.label('输出频率').classes('text-sm opacity-70')
+                        ui.label(tr('输出频率')).classes('text-sm opacity-70')
                         qtf_refs['freq_qtft'] = ui.toggle(
-                            {1: 'rad/s', 2: 'Hz', 3: '周期 s'},
+                            {1: 'rad/s', 2: 'Hz', 3: tr('周期 s')},
                             value=(int(P['freq_qtft']) if str(P['freq_qtft']) in ('1', '2', '3') else None),
                             on_change=bind_str('freq_qtft'))
                     with ui.row().classes('items-center gap-4 flex-wrap qtfpost-row'):
-                        ui.label('QTFpostproc 汇总开关').classes('text-sm opacity-70')
+                        ui.label(tr('QTFpostproc 汇总开关')).classes('text-sm opacity-70')
                         qtf_refs['duko'] = ui.checkbox(
                             'DUOK', value=P['duko'] == '1', on_change=bind_bool01('duko')) \
-                            .tooltip('近场二次项（可直接压力积分，无需二阶势）')
+                            .tooltip(tr('近场二次项（可直接压力积分，无需二阶势）'))
                         qtf_refs['hasbo'] = ui.checkbox(
                             'HASBO', value=P['hasbo'] == '1', on_change=bind_bool01('hasbo')) \
-                            .tooltip('势项·船体/水线（间接法）')
+                            .tooltip(tr('势项·船体/水线（间接法）'))
                         qtf_refs['hasfs'] = ui.checkbox(
                             'HASFS+ASYMP', value=P['hasfs_symp'] == '1', on_change=bind_bool01('hasfs_symp')) \
-                            .tooltip('自由面积分：有限域 + 半无限域渐近（间接法）')
+                            .tooltip(tr('自由面积分：有限域 + 半无限域渐近（间接法）'))
                 _sync_qtf(qtf_refs)
 
     # ---------------- 全宽：Run 动作 + 实时日志 ----------------
@@ -1459,7 +1469,7 @@ def index():
                 .props('dense').classes('bg-green-600')
             ui.button('▶ Run QTF', on_click=lambda: act_run("qtf", log)) \
                 .props('dense').classes('bg-purple-600')
-        ui.label('Run 前旧 results/QTFPreprocOut 等目录自动改名为 *_bak_<时间戳>，不会删除任何历史结果。') \
+        ui.label(tr('Run 前旧 results/QTFPreprocOut 等目录自动改名为 *_bak_<时间戳>，不会删除任何历史结果。')) \
             .classes('text-xs opacity-50')
         log = ui.log(max_lines=800).classes('w-full h-72')
 
@@ -1476,10 +1486,10 @@ def index():
             direc_sel.enable()
 
     with ui.card().classes('w-full mx-4 my-2'):
-        ui.label('Results（与桌面版 PLOT 页同口径）').classes('font-semibold')
+        ui.label(tr('Results（与桌面版 PLOT 页同口径）')).classes('font-semibold')
         with ui.row().classes('items-center gap-2 flex-wrap'):
             res_type = ui.select({k: v for k, v in RESULT_TYPES},
-                                 value='waveforce', label='类型',
+                                 value='waveforce', label=tr('类型'),
                                  on_change=lambda e: _sync_res_controls()) \
                 .props('dense outlined').classes('w-44')
             dof_i = ui.select({0: 'Surge', 1: 'Sway', 2: 'Heave',
@@ -1488,20 +1498,20 @@ def index():
                 .props('dense outlined').classes('w-28')
             dof_j = ui.select({0: 'Surge', 1: 'Sway', 2: 'Heave',
                                3: 'Roll', 4: 'Pitch', 5: 'Yaw'},
-                              value=0, label='DOF j（幅值/阻尼用）') \
+                              value=0, label=tr('DOF j（幅值/阻尼用）')) \
                 .props('dense outlined').classes('w-44')
-            direc_sel = ui.select({-1: '所有方向', 0: 'dir[0]'}, value=-1,
-                                  label='方向') \
+            direc_sel = ui.select({-1: tr('所有方向'), 0: 'dir[0]'}, value=-1,
+                                  label=tr('方向')) \
                 .props('dense outlined').classes('w-32')
             x_sel = ui.select({'period': 'Period (s)', 'hz': 'Frequency (Hz)',
                                'rad': 'Frequency (rad/s)'}, value='period',
-                              label='横坐标',
+                              label=tr('横坐标'),
                               on_change=lambda e: refresh_results(
                                   res_type, dof_i, dof_j, direc_sel, chart, x_sel)) \
                 .props('dense outlined').classes('w-40')
-            ui.button('刷新结果', on_click=lambda: refresh_results(
+            ui.button(tr('刷新结果'), on_click=lambda: refresh_results(
                 res_type, dof_i, dof_j, direc_sel, chart, x_sel)).props('dense')
-            ui.button('加载方向列表', on_click=lambda: load_directions(direc_sel)) \
+            ui.button(tr('加载方向列表'), on_click=lambda: load_directions(direc_sel)) \
                 .props('dense outline')
         _sync_res_controls()   # 初始状态：waveforce -> DOF j 禁用、方向可用
         chart = ui.echart({"backgroundColor": "transparent",
@@ -1512,27 +1522,27 @@ def index():
 
     # ---------------- QTF 结果（等高线） ----------------
     with ui.card().classes('w-full mx-4 my-2'):
-        ui.label('QTF Results（等高线，数据源 results/QTF/OUT_QTF*.dat，值已按 ρg 归一化）') \
+        ui.label(tr('QTF Results（等高线，数据源 results/QTF/OUT_QTF*.dat，值已按 ρg 归一化）')) \
             .classes('font-semibold')
-        ui.label('四联显示：左组 幅值 / 相位，右组 实部 / 虚部（|QTF|/ρg 取 log10 色标）') \
+        ui.label(tr('四联显示：左组 幅值 / 相位，右组 实部 / 虚部（|QTF|/ρg 取 log10 色标）')) \
             .classes('text-xs opacity-70')
         with ui.row().classes('items-center gap-2 flex-wrap'):
-            qtf_set = ui.select({'qtfm': '差频 QTFM（ω1−ω2，慢漂）',
-                                 'qtfp': '和频 QTFP（ω1+ω2）'},
-                                value='qtfm', label='QTF 类型') \
+            qtf_set = ui.select({'qtfm': tr('差频 QTFM（ω1−ω2，慢漂）'),
+                                 'qtfp': tr('和频 QTFP（ω1+ω2）')},
+                                value='qtfm', label=tr('QTF 类型')) \
                 .props('dense outlined').classes('w-56')
-            qtf_beta = ui.select({0: 'β（点"加载QTF选项"填充）'}, value=0,
-                                 label='波浪方向对') \
+            qtf_beta = ui.select({0: tr('β（点"加载QTF选项"填充）')}, value=0,
+                                 label=tr('波浪方向对')) \
                 .props('dense outlined').classes('w-44')
             qtf_dof = ui.select({i: n for i, n in enumerate(
                 ['Surge', 'Sway', 'Heave', 'Roll', 'Pitch', 'Yaw'])},
-                value=2, label='自由度 DOF') \
+                value=2, label=tr('自由度 DOF')) \
                 .props('dense outlined').classes('w-36')
             qtf_x = ui.select({'period': 'Period (s)', 'hz': 'Frequency (Hz)',
                                'rad': 'Frequency (rad/s)'}, value='rad',
-                              label='坐标单位') \
+                              label=tr('坐标单位')) \
                 .props('dense outlined').classes('w-40')
-            ui.button('加载QTF选项', on_click=lambda: (
+            ui.button(tr('加载QTF选项'), on_click=lambda: (
                 load_qtf_options(qtf_set, qtf_beta, qtf_dof),
                 _qtf_refresh(), _qtf_diag_refresh())).props('dense outline')
         qtf_ctx = ui.label('').classes('text-xs opacity-80')
@@ -1558,24 +1568,24 @@ def index():
 
     # ---------------- QTF 主对角线二阶载荷（Results 样式，多浪向对比） ----------------
     with ui.card().classes('w-full mx-4 my-2'):
-        ui.label('QTF Diagonal — 主对角线二阶载荷（ω1=ω2 等同平均漂移力；'
-                 '全部浪向对同图对比，样式同 Results）').classes('font-semibold')
+        ui.label(tr('QTF Diagonal — 主对角线二阶载荷（ω1=ω2 等同平均漂移力；'
+                    '全部浪向对同图对比，样式同 Results）')).classes('font-semibold')
         with ui.row().classes('items-center gap-2 flex-wrap'):
-            qtf_set2 = ui.select({'qtfm': '差频 QTFM（ω1−ω2，慢漂）',
-                                  'qtfp': '和频 QTFP（ω1+ω2）'},
-                                 value='qtfm', label='QTF 类型') \
+            qtf_set2 = ui.select({'qtfm': tr('差频 QTFM（ω1−ω2，慢漂）'),
+                                  'qtfp': tr('和频 QTFP（ω1+ω2）')},
+                                 value='qtfm', label=tr('QTF 类型')) \
                 .props('dense outlined').classes('w-56')
             qtf_dof2 = ui.select({i: n for i, n in enumerate(
                 ['Surge', 'Sway', 'Heave', 'Roll', 'Pitch', 'Yaw'])},
-                value=0, label='自由度 DOF') \
+                value=0, label=tr('自由度 DOF')) \
                 .props('dense outlined').classes('w-36')
-            qtf_qty2 = ui.select({'mod': '|QTF|/ρg（模）', 're': 'Re/ρg',
-                                  'im': 'Im/ρg', 'phase': '相位 deg'},
-                                 value='mod', label='量') \
+            qtf_qty2 = ui.select({'mod': tr('|QTF|/ρg（模）'), 're': 'Re/ρg',
+                                  'im': 'Im/ρg', 'phase': tr('相位 deg')},
+                                 value='mod', label=tr('量')) \
                 .props('dense outlined').classes('w-40')
             qtf_x2 = ui.select({'period': 'Period (s)', 'hz': 'Frequency (Hz)',
                                 'rad': 'Frequency (rad/s)'}, value='period',
-                               label='横坐标') \
+                               label=tr('横坐标')) \
                 .props('dense outlined').classes('w-40')
         def _qtf_diag_refresh(*_):
             refresh_qtf_diag(qtf_set2, qtf_dof2, qtf_qty2, qtf_x2, qtf_diag_chart)
@@ -1596,15 +1606,15 @@ def index():
 def load_directions(direc_sel):
     data = wc.get_results(P["model_name"])
     if not data.get("ok"):
-        ui.notify('；'.join(data["errors"]) or '无结果', type='warning')
+        ui.notify('；'.join(data["errors"]) or tr('无结果'), type='warning')
         return
     dirs = data["axes"]["direc_deg"]
     cur = direc_sel.value
-    direc_sel.options = {-1: '所有方向',
+    direc_sel.options = {-1: tr('所有方向'),
                          **{i: ('Wave %.0f°' % d) for i, d in enumerate(dirs)}}
     direc_sel.value = cur if cur in direc_sel.options else -1
     direc_sel.update()
-    ui.notify('已加载 %d 个浪向（可选单个方向或所有方向）' % len(dirs))
+    ui.notify(tr('已加载 %d 个浪向（可选单个方向或所有方向）') % len(dirs))
 
 
 if __name__ in {"__main__", "__mp_main__"}:
