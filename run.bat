@@ -46,8 +46,10 @@ if not defined PYEXE (
     exit /b 1
 )
 
+set "WARP_OPEN_BROWSER=1"
+
 echo Using Python: %PYEXE%
-echo Starting WARP Web on http://127.0.0.1:8300  --  press Ctrl+C to stop
+echo Starting WARP Web on http://127.0.0.1:8300  --  browser opens automatically, press Ctrl+C to stop
 echo.
 %PYEXE% warp_web.py
 if errorlevel 1 (

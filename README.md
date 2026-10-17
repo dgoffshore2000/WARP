@@ -30,7 +30,7 @@ WARP 是开源 BEM 求解器 Nemoh（LHEEA）的前后处理工具，通过浏�
 pip install -r requirements.txt
 
 # 2. 启动服务
-python warp_web.py        # Windows 下也可双击 run.bat
+python warp_web.py        # 命令行启动；Windows 下也可双击 run.bat（自动选 Anaconda 并打开浏览器）
 ```
 
 浏览器打开 <http://127.0.0.1:8300>，在模型列表中选择示例模型 `cylinder_irr`（网格与参数已就位），即可依次运行 HYST / BEM 体验全流程。

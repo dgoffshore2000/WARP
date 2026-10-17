@@ -24,7 +24,7 @@ cylinder_irr.dat    ! Name of mesh file
 2  0  0  1         0.000     0.000     0.000   ! force 6
 0                   ! Number of lines of additional information
 --- Load cases to be solved ---------
-1 30 0.2 2.0 ! Freq type 1,2,3=[rad/s,Hz,s], Number of wave frequencies/periods, Min, and Max
+1 30 0.3 2.0 ! Freq type 1,2,3=[rad/s,Hz,s], Number of wave frequencies/periods, Min, and Max
 5 0 180 ! Number of wave directions, Min and Max (degrees)
 --- Post processing -------
 0  0   0            ! IRF calculation (0 for no calculation), time step and duration
@@ -34,14 +34,14 @@ cylinder_irr.dat    ! Name of mesh file
 1                   ! Response Amplitude Operator (RAO), 0 no calculation, 1 calculated
 1                   ! output freq type, 1,2,3=[rad/s,Hz,s]
 ----- QTF--------------------
-0                   ! QTF flag, 1 is calculated
-0 0 0               ! Number of radial frequencies, Min, and Max values for the QTF computation
+1                   ! QTF flag, 1 is calculated
+30 0.3 2.0          ! Number of radial frequencies, Min, and Max values for the QTF computation
 0                   ! 0 Unidirection, Bidirection 1 
-0                   ! Contrib, 1 DUOK, 2 DUOK+HASBO, 3 Full QTF (DUOK+HASBO+HASFS+ASYMP)
-0                   ! Name of free surface meshfile (Only for Contrib 3), type 'NA' if not applicable
-0                   ! Free surface QTF parameters: Re Nre NBessel (for Contrib 3)
+2                   ! Contrib, 1 DUOK, 2 DUOK+HASBO, 3 Full QTF (DUOK+HASBO+HASFS+ASYMP)
+NA                  ! Name of free surface meshfile (Only for Contrib 3), type 'NA' if not applicable
+0 0 0               ! Free surface QTF parameters: Re Nre NBessel (for Contrib 3)
 0                   ! 1 Includes Hydrostatic terms of the quadratic first order motion, -[K]xi2_tilde
-0                   ! For QTFposProc, output freq type, 1,2,3=[rad/s,Hz,s]
-0                   ! For QTFposProc, 1 includes DUOK in total QTFs, 0 otherwise
-0                   ! For QTFposProc, 1 includes HASBO in total QTFs, 0 otherwise
+1                   ! For QTFposProc, output freq type, 1,2,3=[rad/s,Hz,s]
+1                   ! For QTFposProc, 1 includes DUOK in total QTFs, 0 otherwise
+1                   ! For QTFposProc, 1 includes HASBO in total QTFs, 0 otherwise
 0                   ! For QTFposProc, 1 includes HASFS+ASYMP in total QTFs, 0 otherwise

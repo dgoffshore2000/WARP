@@ -1609,6 +1609,9 @@ def load_directions(direc_sel):
 
 if __name__ in {"__main__", "__mp_main__"}:
     import sys
-    # 打包版（PyInstaller frozen）双击 exe 时自动打开浏览器；开发模式不弹窗
+    # 打包版（PyInstaller frozen）双击 exe、或 run.bat 设置 WARP_OPEN_BROWSER=1 时，
+    # 服务就绪后自动打开浏览器；直接用 python warp_web.py 调试时不弹窗
+    _open_browser = bool(getattr(sys, 'frozen', False)) \
+        or os.environ.get("WARP_OPEN_BROWSER") == "1"
     ui.run(host="127.0.0.1", port=8300, title="WARP Web", reload=False,
-           show=bool(getattr(sys, 'frozen', False)))
+           show=_open_browser)

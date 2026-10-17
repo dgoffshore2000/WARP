@@ -1,5 +1,5 @@
 cylinder_irr        ! modelname   
-0                   ! SYMM of XOZ   
+1                   ! SYMM of XOZ   
 0 0                 ! location at XOY   
 0 0 0               ! COG   
 634                 ! panels   

@@ -1,0 +1,58 @@
+  ----Pre-Processing (QTF Module)---
+  NFreq=   30, omega = (  0.300:  0.059:  2.000) rad/s
+  Nbeta=    5, beta  = (  0.000: 45.000:180.000) deg
+  NBodies=  1, NDOF=6
+  NPanels (Body)        =    634
+  NPanels (Free Surface)=      0
+  Waterdepth= ******* m
+  NP Gauss Quadrature Integ.:   4
+  EPS min z                 :    1.00000005E-03
+  STARTING TIME:
+   Date:           17 -          10 -        2026
+   Time:           10 :          17 :          44
+  -------
+ Omega=   0.300 [rad/s],              Green Fun: Finite-Depth. DONE!
+ Omega=   0.359 [rad/s],              Green Fun: Finite-Depth. DONE!
+ Omega=   0.417 [rad/s],              Green Fun: Finite-Depth. DONE!
+ Omega=   0.476 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   0.534 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   0.593 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   0.652 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   0.710 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   0.769 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   0.828 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   0.886 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   0.945 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.003 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.062 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.121 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.179 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.238 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.297 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.355 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.414 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.472 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.531 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.590 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.648 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.707 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.766 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.824 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.883 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   1.941 [rad/s],              Green Fun: Infinite-Depth. DONE!
+ Omega=   2.000 [rad/s],              Green Fun: Infinite-Depth. DONE!
+  -------
+  Computation time   33.6875000      [s]
+  ---- DONE ---
+  ----Solver (QTF Module)---
+  Beta=    0.000 deg, NFreq=   30, omega = (   0.300:   0.059:   2.000) rad/s
+  Beta=   45.000 deg, NFreq=   30, omega = (   0.300:   0.059:   2.000) rad/s
+  Beta=   90.000 deg, NFreq=   30, omega = (   0.300:   0.059:   2.000) rad/s
+  Beta=  135.000 deg, NFreq=   30, omega = (   0.300:   0.059:   2.000) rad/s
+  Beta=  180.000 deg, NFreq=   30, omega = (   0.300:   0.059:   2.000) rad/s
+  --------------------------
+  STARTING TIME:
+   Date:           17 -          10 -        2026
+   Time:           10 :          18 :          51
+  Computation time   28.3125000      [s]
+  ---- DONE ---
