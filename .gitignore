@@ -25,6 +25,12 @@ venv/
 **/logfile.txt
 *.log
 
+# 示例模型的计算中间产物（由程序重新生成，且体积大）
+**/results/sources/
+**/QTFPreprocOut/
+**/Mechanics/
+**/*.bin
+
 # 示例模型内与本机路径绑定的遗留脚本（含 d:\... 硬编码路径）
 **/run_mesh.bat
 db/*/run.bat
