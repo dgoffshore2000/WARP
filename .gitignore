@@ -23,6 +23,7 @@ venv/
 **/*.srcbak
 **/*.bak
 **/logfile.txt
+**/logfile*.txt
 *.log
 
 # 示例模型的计算中间产物（由程序重新生成，且体积大）
